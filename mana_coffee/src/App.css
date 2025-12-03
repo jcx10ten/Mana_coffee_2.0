@@ -1,0 +1,435 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', 'Helvetica', sans-serif;
+  overflow-x: hidden;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  width: 100%;
+  min-height: calc(100vh - 80px - 200px); /* navbar + footer aproximado */
+}
+
+/* Estilos para los enlaces del navbar */
+.nav-link {
+  text-decoration: none;
+  color: inherit;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #8B4513;
+}
+
+.logo-link {
+  text-decoration: none;
+  color: inherit;
+}
+/* ============================================
+   APP.CSS - MANA COFFEE
+   Página Principal - Solo Estructura y Diseño
+   ============================================ */
+
+/* ============================================
+   RESET Y CONFIGURACIÓN GLOBAL
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ============================================
+   NAVBAR - Barra de navegación superior
+   Logo + Links del menú + Botón Reservar
+   ============================================ */
+.navbar {
+  width: 100%;
+  height: 80px;
+  background-color: #e6d9f0; /* Color temporal - EDITAR AQUÍ */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo del navbar */
+.navbar-logo {
+  width: 60px;
+  height: 60px;
+  background-color: #fff; /* Color temporal - EDITAR AQUÍ */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+/* Contenedor de los links del menú */
+.navbar-menu {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.navbar-menu li a {
+  text-decoration: none;
+  color: #000; /* Color temporal - EDITAR AQUÍ */
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.navbar-menu li a:hover {
+  transform: scale(1.05);
+}
+
+/* Botón de Reservar en el navbar */
+.navbar-reservar-btn {
+  padding: 12px 30px;
+  background-color: #d8b4e2; /* Color temporal - EDITAR AQUÍ */
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.navbar-reservar-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   CARRUSEL DE FOTOS - Hero Section
+   Slideshow de imágenes con flechas
+   ============================================ */
+.carrusel-section {
+  width: 100%;
+  height: 500px;
+  background-color: #c8b3d8; /* Color temporal - EDITAR AQUÍ */
+  margin-top: 80px; /* Espacio para el navbar fijo */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Texto dentro del carrusel */
+.carrusel-content {
+  text-align: center;
+  color: #000; /* Color temporal - EDITAR AQUÍ */
+}
+
+.carrusel-content h2 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+/* Flechas del carrusel - Izquierda */
+.carrusel-arrow-left {
+  position: absolute;
+  left: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.7); /* EDITAR AQUÍ */
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Flechas del carrusel - Derecha */
+.carrusel-arrow-right {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.7); /* EDITAR AQUÍ */
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carrusel-arrow-left:hover,
+.carrusel-arrow-right:hover {
+  background-color: rgba(255, 255, 255, 1);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* ============================================
+   SECCIÓN TÍTULO Y TEXTO 1 - Imagen izquierda
+   Contenedor con imagen + texto descriptivo
+   ============================================ */
+.texto-imagen-section-1 {
+  width: 100%;
+  min-height: 400px;
+  background-color: #b8a8d8; /* Color temporal - EDITAR AQUÍ */
+  display: flex;
+  align-items: center;
+  padding: 60px 80px;
+  gap: 60px;
+}
+
+/* Imagen a la izquierda */
+.texto-imagen-1-img {
+  width: 300px;
+  height: 300px;
+  background-color: #fff; /* Color temporal - EDITAR AQUÍ */
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Contenido de texto a la derecha */
+.texto-imagen-1-content {
+  flex: 1;
+}
+
+.texto-imagen-1-content h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #000; /* EDITAR AQUÍ */
+}
+
+.texto-imagen-1-content p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #333; /* EDITAR AQUÍ */
+}
+
+/* ============================================
+   SECCIÓN TÍTULO Y TEXTO 2 - Imagen derecha
+   Contenedor con texto descriptivo + imagen
+   ============================================ */
+.texto-imagen-section-2 {
+  width: 100%;
+  min-height: 400px;
+  background-color: #a89dc9; /* Color temporal - EDITAR AQUÍ */
+  display: flex;
+  align-items: center;
+  padding: 60px 80px;
+  gap: 60px;
+}
+
+/* Contenido de texto a la izquierda */
+.texto-imagen-2-content {
+  flex: 1;
+}
+
+.texto-imagen-2-content h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #000; /* EDITAR AQUÍ */
+}
+
+.texto-imagen-2-content p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #333; /* EDITAR AQUÍ */
+}
+
+/* Imagen a la derecha */
+.texto-imagen-2-img {
+  width: 300px;
+  height: 300px;
+  background-color: #fff; /* Color temporal - EDITAR AQUÍ */
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  color: #666;
+}
+
+/* ============================================
+   SECCIÓN RESERVA
+   Texto descriptivo + Botón de reserva
+   ============================================ */
+.reserva-section {
+  width: 100%;
+  min-height: 300px;
+  background-color: #d8b4e2; /* Color temporal - EDITAR AQUÍ */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 80px;
+  text-align: center;
+}
+
+.reserva-section h2 {
+  font-size: 42px;
+  margin-bottom: 30px;
+  color: #000; /* EDITAR AQUÍ */
+}
+
+.reserva-section p {
+  font-size: 20px;
+  max-width: 800px;
+  margin-bottom: 40px;
+  line-height: 1.8;
+  color: #333; /* EDITAR AQUÍ */
+}
+
+/* Botón de Reserva */
+.reserva-btn {
+  padding: 18px 50px;
+  background-color: #fff; /* Color temporal - EDITAR AQUÍ */
+  border: 2px solid #000; /* EDITAR AQUÍ */
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.reserva-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   SECCIÓN MENÚ
+   Texto descriptivo + Botón de menú
+   ============================================ */
+.menu-section {
+  width: 100%;
+  min-height: 300px;
+  background-color: #b8b8b8; /* Color temporal - EDITAR AQUÍ */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 80px;
+  text-align: center;
+}
+
+.menu-section h2 {
+  font-size: 42px;
+  margin-bottom: 30px;
+  color: #000; /* EDITAR AQUÍ */
+}
+
+.menu-section p {
+  font-size: 20px;
+  max-width: 800px;
+  margin-bottom: 40px;
+  line-height: 1.8;
+  color: #333; /* EDITAR AQUÍ */
+}
+
+/* Botón de Menú */
+.menu-btn {
+  padding: 18px 50px;
+  background-color: #fff; /* Color temporal - EDITAR AQUÍ */
+  border: 2px solid #000; /* EDITAR AQUÍ */
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.menu-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   RESPONSIVE - Tablets
+   ============================================ */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 30px;
+  }
+  
+  .navbar-menu {
+    gap: 20px;
+  }
+  
+  .navbar-menu li a {
+    font-size: 14px;
+  }
+  
+  .texto-imagen-section-1,
+  .texto-imagen-section-2 {
+    flex-direction: column;
+    padding: 40px 30px;
+  }
+  
+  .texto-imagen-1-img,
+  .texto-imagen-2-img {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE - Móviles
+   ============================================ */
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0 20px;
+  }
+  
+  .navbar-menu {
+    display: none; /* Aquí puedes agregar un menú hamburguesa después */
+  }
+  
+  .carrusel-section {
+    height: 300px;
+  }
+  
+  .carrusel-content h2 {
+    font-size: 32px;
+  }
+  
+  .texto-imagen-section-1,
+  .texto-imagen-section-2,
+  .reserva-section,
+  .menu-section {
+    padding: 30px 20px;
+  }
+}

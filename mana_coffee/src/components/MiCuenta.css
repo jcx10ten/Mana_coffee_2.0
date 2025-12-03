@@ -1,0 +1,319 @@
+.mi-cuenta-container {
+  min-height: calc(100vh - 80px - 200px);
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.mi-cuenta-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.mi-cuenta-header h1 {
+  font-size: 36px;
+  color: #333;
+}
+
+.btn-nueva-reserva {
+  padding: 12px 30px;
+  background: linear-gradient(to right, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.btn-nueva-reserva:hover {
+  transform: scale(1.05);
+}
+
+.loading {
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 20px;
+  color: #666;
+}
+
+.error-message {
+  background: #ff4444;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.sin-reservas {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.sin-reservas p {
+  font-size: 20px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.btn-reservar-ahora {
+  padding: 15px 40px;
+  background: linear-gradient(to right, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.btn-reservar-ahora:hover {
+  transform: scale(1.05);
+}
+
+/* Grid de reservas */
+.reservas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.reserva-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.reserva-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.reserva-card-header {
+  background: linear-gradient(to right, #667eea, #764ba2);
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reserva-id {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.reserva-estado {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.3);
+  text-transform: capitalize;
+}
+
+.reserva-card-body {
+  padding: 20px;
+}
+
+.reserva-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 15px;
+  font-size: 15px;
+}
+
+.reserva-icono {
+  font-size: 20px;
+}
+
+.reserva-comentarios {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+  font-size: 14px;
+  color: #666;
+}
+
+.reserva-comentarios p {
+  margin-top: 8px;
+  line-height: 1.6;
+}
+
+.reserva-card-footer {
+  padding: 15px 20px;
+  background: #f9f9f9;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.btn-editar,
+.btn-cancelar-reserva {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-editar {
+  background: #4CAF50;
+  color: white;
+}
+
+.btn-editar:hover {
+  background: #45a049;
+}
+
+.btn-cancelar-reserva {
+  background: #f44336;
+  color: white;
+}
+
+.btn-cancelar-reserva:hover {
+  background: #da190b;
+}
+
+.reserva-no-editable {
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  background: #fff3cd;
+  color: #856404;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Modal de edición */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.modal-editar {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-editar h2 {
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.btn-cancelar-modal,
+.btn-guardar {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-cancelar-modal {
+  background: #e0e0e0;
+  color: #666;
+}
+
+.btn-cancelar-modal:hover {
+  background: #d0d0d0;
+}
+
+.btn-guardar {
+  background: linear-gradient(to right, #667eea, #764ba2);
+  color: white;
+}
+
+.btn-guardar:hover {
+  transform: scale(1.02);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .reservas-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .mi-cuenta-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-nueva-reserva {
+    width: 100%;
+  }
+}

@@ -1,0 +1,336 @@
+/* ============================================
+   FORMULARIO DE RESERVA - MANA COFFEE
+   Estilos para el modal y formulario
+   📁 ARCHIVO: src/components/FormularioReserva.css
+   ============================================ */
+
+/* ============================================
+   OVERLAY DEL MODAL (Fondo oscuro)
+   Cubre toda la pantalla cuando se abre
+   EDITAR: opacity y background-color
+   ============================================ */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro semi-transparente - EDITAR */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* ============================================
+   CONTENEDOR DEL MODAL (La caja blanca)
+   El formulario completo
+   EDITAR: background-color, border-radius
+   ============================================ */
+.modal-container {
+  background-color: #ffffff; /* Fondo blanco del modal - EDITAR */
+  border-radius: 20px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); /* Sombra del modal - EDITAR */
+  position: relative;
+  animation: slideDown 0.3s ease-out;
+}
+
+/* Animación de entrada del modal */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   ENCABEZADO DEL FORMULARIO
+   Título y botón de cerrar
+   EDITAR: background, color
+   ============================================ */
+.formulario-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Gradiente del header - EDITAR */
+  color: #ffffff; /* Color del texto - EDITAR */
+  padding: 30px;
+  border-radius: 20px 20px 0 0;
+  position: relative;
+}
+
+.formulario-header h2 {
+  font-size: 28px;
+  margin: 0;
+  font-weight: 700;
+}
+
+.formulario-header p {
+  margin: 10px 0 0 0;
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+/* ============================================
+   BOTÓN DE CERRAR (X)
+   La X en la esquina superior derecha
+   EDITAR: background-color, color
+   ============================================ */
+.btn-cerrar-modal {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: rgba(255, 255, 255, 0.2); /* Fondo del botón X - EDITAR */
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  color: #ffffff; /* Color de la X - EDITAR */
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.btn-cerrar-modal:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: rotate(90deg);
+}
+
+/* ============================================
+   CUERPO DEL FORMULARIO
+   Donde están todos los campos
+   EDITAR: padding, background
+   ============================================ */
+.formulario-body {
+  padding: 30px;
+  background-color: #fafafa; /* Fondo del cuerpo - EDITAR */
+}
+
+/* ============================================
+   GRUPO DE CAMPOS (Cada campo del formulario)
+   Nombre, email, teléfono, etc.
+   ============================================ */
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2d2d2d; /* Color de las etiquetas - EDITAR */
+  margin-bottom: 8px;
+}
+
+.form-group label span {
+  color: #e74c3c; /* Color del asterisco rojo (*) - EDITAR */
+}
+
+/* ============================================
+   INPUTS (Campos de texto, email, teléfono)
+   Los cuadros donde se escribe
+   EDITAR: border, background-color, focus
+   ============================================ */
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 15px;
+  border: 2px solid #e0e0e0; /* Borde del input - EDITAR */
+  border-radius: 8px;
+  background-color: #ffffff; /* Fondo del input - EDITAR */
+  color: #2d2d2d; /* Color del texto - EDITAR */
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #667eea; /* Color del borde al hacer clic - EDITAR */
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); /* Sombra al hacer foco - EDITAR */
+}
+
+.form-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* ============================================
+   FILA DE DOS COLUMNAS
+   Para poner dos campos lado a lado
+   ============================================ */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* ============================================
+   MENSAJES DE ERROR
+   Texto rojo debajo de los campos con error
+   EDITAR: color
+   ============================================ */
+.error-message {
+  color: #e74c3c; /* Color rojo del error - EDITAR */
+  font-size: 14px;
+  margin-top: 5px;
+  display: block;
+}
+
+/* ============================================
+   BOTONES DEL FORMULARIO
+   Botón de enviar y cancelar
+   EDITAR: colores de fondo y texto
+   ============================================ */
+.formulario-footer {
+  padding: 20px 30px;
+  background-color: #ffffff; /* Fondo del footer - EDITAR */
+  border-radius: 0 0 20px 20px;
+  display: flex;
+  gap: 15px;
+  justify-content: flex-end;
+}
+
+.btn-enviar,
+.btn-cancelar {
+  padding: 14px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Botón principal de enviar */
+.btn-enviar {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Gradiente del botón - EDITAR */
+  color: #ffffff; /* Color del texto - EDITAR */
+  flex: 1;
+}
+
+.btn-enviar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-enviar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Botón secundario de cancelar */
+.btn-cancelar {
+  background-color: #e0e0e0; /* Fondo gris del botón cancelar - EDITAR */
+  color: #5a5a5a; /* Color del texto - EDITAR */
+}
+
+.btn-cancelar:hover {
+  background-color: #d0d0d0;
+}
+
+/* ============================================
+   INDICADOR DE CARGA
+   Mensaje mientras se envía el formulario
+   EDITAR: background, color
+   ============================================ */
+.loading-message {
+  text-align: center;
+  padding: 20px;
+  background-color: #f0f8ff; /* Fondo azul claro - EDITAR */
+  border-radius: 8px;
+  color: #667eea; /* Color del texto - EDITAR */
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* ============================================
+   MENSAJE DE ÉXITO
+   Se muestra cuando la reserva es exitosa
+   EDITAR: background, color
+   ============================================ */
+.success-message {
+  text-align: center;
+  padding: 40px 30px;
+  background-color: #d4edda; /* Fondo verde claro - EDITAR */
+  border-radius: 8px;
+  color: #155724; /* Color del texto verde - EDITAR */
+}
+
+.success-message h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #155724; /* Color del título - EDITAR */
+}
+
+.success-message p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+/* ============================================
+   RESPONSIVE - TABLETS
+   ============================================ */
+@media (max-width: 768px) {
+  .modal-container {
+    max-width: 95%;
+  }
+
+  .formulario-header h2 {
+    font-size: 24px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .formulario-footer {
+    flex-direction: column;
+  }
+
+  .btn-enviar,
+  .btn-cancelar {
+    width: 100%;
+  }
+}
+
+/* ============================================
+   RESPONSIVE - MÓVILES
+   ============================================ */
+@media (max-width: 480px) {
+  .modal-overlay {
+    padding: 10px;
+  }
+
+  .formulario-header,
+  .formulario-body,
+  .formulario-footer {
+    padding: 20px;
+  }
+
+  .formulario-header h2 {
+    font-size: 22px;
+  }
+
+  .btn-cerrar-modal {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+  }
+}

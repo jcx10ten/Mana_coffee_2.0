@@ -1,0 +1,66 @@
+.contactenos {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+.contactenos-title {
+  text-align: center;
+  font-size: 48px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.contactenos-subtitle {
+  text-align: center;
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 60px;
+}
+
+.contactenos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contactenos-card {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s;
+}
+
+.contactenos-card:hover {
+  transform: translateY(-10px);
+}
+
+.contactenos-card-title {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #667eea;
+}
+
+.contactenos-card-text {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contactenos {
+    padding: 50px 15px;
+  }
+
+  .contactenos-title {
+    font-size: 36px;
+  }
+
+  .contactenos-grid {
+    grid-template-columns: 1fr;
+  }
+}

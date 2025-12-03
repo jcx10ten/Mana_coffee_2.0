@@ -1,0 +1,339 @@
+/* FORZAR VISIBILIDAD - DEBUG */
+.reserva-container {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  background-color: #faf8f5 !important;
+  min-height: 100vh !important;
+  padding-top: 100px !important;
+}
+
+.reserva-header h1 {
+  color: #000 !important;
+  font-size: 48px !important;
+}
+
+
+
+/* ============================================
+   RESERVA.CSS - MANA COFFEE
+   Inspirado en el diseño de Megy
+   ============================================ */
+
+/* CONTENEDOR PRINCIPAL */
+.reserva-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #faf8f5;
+  padding: 100px 20px 60px 20px;
+}
+
+/* ENCABEZADO PRINCIPAL */
+.reserva-header {
+  max-width: 900px;
+  margin: 0 auto 50px auto;
+  text-align: center;
+}
+
+.reserva-header h1 {
+  font-size: 48px;
+  color: #2d2d2d;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.reserva-header-subtitle {
+  font-size: 20px;
+  color: #5a5a5a;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* SECCIÓN DE INFORMACIÓN */
+.reserva-info-section {
+  max-width: 900px;
+  margin: 0 auto 50px auto;
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 40px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 25px;
+  gap: 15px;
+}
+
+.info-item:last-child {
+  margin-bottom: 0;
+}
+
+.info-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.info-content {
+  flex: 1;
+}
+
+.info-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2d2d2d;
+  margin-bottom: 5px;
+}
+
+.info-description {
+  font-size: 16px;
+  color: #5a5a5a;
+  line-height: 1.6;
+}
+
+/* SECCIÓN PASO A PASO */
+.reserva-pasos-section {
+  max-width: 900px;
+  margin: 0 auto 50px auto;
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 40px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.pasos-title {
+  font-size: 32px;
+  color: #2d2d2d;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.pasos-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.paso-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.paso-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.paso-numero {
+  width: 35px;
+  height: 35px;
+  background-color: #667eea;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-right: 15px;
+  margin-top: 3px;
+}
+
+.paso-texto {
+  flex: 1;
+  font-size: 16px;
+  color: #5a5a5a;
+  line-height: 1.6;
+}
+
+/* SECCIÓN DE PRECIOS */
+.reserva-precios-section {
+  max-width: 900px;
+  margin: 0 auto 50px auto;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 15px;
+  padding: 40px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  color: #ffffff;
+}
+
+.precios-title {
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.precios-descripcion {
+  font-size: 18px;
+  line-height: 1.8;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.precios-nota {
+  font-size: 16px;
+  text-align: center;
+  font-style: italic;
+  opacity: 0.95;
+  margin-top: 20px;
+}
+
+/* SECCIÓN DE AVISO */
+.reserva-aviso-section {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: #fff9e6;
+  border-left: 5px solid #ffc107;
+  border-radius: 10px;
+  padding: 30px 40px;
+}
+
+.aviso-title {
+  font-size: 24px;
+  color: #2d2d2d;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.aviso-texto {
+  font-size: 16px;
+  color: #5a5a5a;
+  line-height: 1.7;
+}
+
+.texto-destacado {
+  font-weight: 700;
+  color: #2d2d2d;
+}
+
+/* BOTÓN PRINCIPAL */
+.reserva-cta-container {
+  max-width: 900px;
+  margin: 50px auto 0 auto;
+  text-align: center;
+}
+
+.reserva-btn-principal {
+  padding: 20px 60px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.reserva-btn-principal:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}
+
+.reserva-btn-principal:active {
+  transform: translateY(-1px);
+}
+
+/* RESPONSIVE - TABLETS */
+@media (max-width: 768px) {
+  .reserva-container {
+    padding: 90px 15px 40px 15px;
+  }
+
+  .reserva-header h1 {
+    font-size: 36px;
+  }
+
+  .reserva-header-subtitle {
+    font-size: 18px;
+  }
+
+  .reserva-info-section,
+  .reserva-pasos-section,
+  .reserva-precios-section,
+  .reserva-aviso-section {
+    padding: 30px 25px;
+  }
+
+  .pasos-title,
+  .precios-title {
+    font-size: 28px;
+  }
+
+  .reserva-btn-principal {
+    padding: 18px 50px;
+    font-size: 18px;
+  }
+}
+
+/* RESPONSIVE - MÓVILES */
+@media (max-width: 480px) {
+  .reserva-container {
+    padding: 80px 10px 30px 10px;
+  }
+
+  .reserva-header h1 {
+    font-size: 28px;
+  }
+
+  .reserva-header-subtitle {
+    font-size: 16px;
+  }
+
+  .reserva-info-section,
+  .reserva-pasos-section,
+  .reserva-precios-section,
+  .reserva-aviso-section {
+    padding: 25px 20px;
+  }
+
+  .info-icon {
+    font-size: 24px;
+  }
+
+  .info-title {
+    font-size: 16px;
+  }
+
+  .info-description {
+    font-size: 14px;
+  }
+
+  .paso-numero {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+  }
+
+  .paso-texto {
+    font-size: 14px;
+  }
+
+  .pasos-title,
+  .precios-title {
+    font-size: 24px;
+  }
+
+  .precios-descripcion {
+    font-size: 16px;
+  }
+
+  .reserva-btn-principal {
+    padding: 16px 40px;
+    font-size: 16px;
+    width: 100%;
+  }
+}
