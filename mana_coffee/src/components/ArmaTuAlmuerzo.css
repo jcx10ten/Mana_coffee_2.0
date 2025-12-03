@@ -1,101 +1,433 @@
+/* ============================================
+   ARMA TU ALMUERZO - MANA COFFEE
+   Sistema de construcción de pedidos
+   ============================================ */
+
 .arma-tu-almuerzo {
-  padding: 80px 20px;
-  background: white;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 100px 20px 60px 20px;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+.arma-header {
+  text-align: center;
+  margin-bottom: 50px;
 }
 
 .arma-title {
-  text-align: center;
   font-size: 48px;
-  margin-bottom: 20px;
-  color: #333;
+  color: #2d3436;
+  margin-bottom: 15px;
+  font-weight: 700;
 }
 
 .arma-subtitle {
-  text-align: center;
   font-size: 20px;
-  color: #666;
-  margin-bottom: 60px;
+  color: #636e72;
+  font-weight: 400;
 }
 
-.arma-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  max-width: 1200px;
+/* ============================================
+   CONTENEDOR PRINCIPAL - 2 COLUMNAS
+   ============================================ */
+.arma-container {
+  max-width: 1400px;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 30px;
+  align-items: start;
 }
 
-.arma-card {
-  background: #f8f9fa;
-  padding: 30px;
-  border-radius: 15px;
-  border: 2px solid #e0e0e0;
-  transition: border-color 0.3s;
+/* ============================================
+   SECCIÓN DE PRODUCTOS (Izquierda)
+   ============================================ */
+.productos-section {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
 
-.arma-card:hover {
-  border-color: #667eea;
-}
-
-.arma-card-title {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #667eea;
-}
-
-.arma-list {
-  list-style: none;
-  padding: 0;
-}
-
-.arma-list-item {
-  padding: 10px;
-  margin-bottom: 8px;
+.categoria-card {
   background: white;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
-.arma-list-item:hover {
-  background: #667eea;
-  color: white;
+.categoria-title {
+  font-size: 26px;
+  color: #667eea;
+  margin-bottom: 20px;
+  font-weight: 700;
+  border-bottom: 3px solid #667eea;
+  padding-bottom: 10px;
+}
+
+.productos-grid {
+  display: grid;
+  gap: 15px;
+}
+
+/* ============================================
+   ITEM DE PRODUCTO
+   ============================================ */
+.producto-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.producto-item:hover {
+  background: #f1f3f5;
+  border-color: #667eea;
   transform: translateX(5px);
 }
 
-.arma-button-container {
-  text-align: center;
-  margin-top: 50px;
+.producto-info {
+  flex: 1;
 }
 
-.arma-button {
-  padding: 15px 50px;
-  font-size: 20px;
-  background: linear-gradient(to right, #667eea, #764ba2);
+.producto-nombre {
+  font-size: 16px;
+  color: #2d3436;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.producto-precio {
+  font-size: 18px;
+  color: #00b894;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* ============================================
+   BOTONES DE AGREGAR Y CANTIDAD
+   ============================================ */
+.btn-agregar {
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
-  border-radius: 30px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
-  font-weight: bold;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s;
+  transition: all 0.3s ease;
 }
 
-.arma-button:hover {
+.btn-agregar:hover {
   transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .arma-tu-almuerzo {
-    padding: 50px 15px;
+.cantidad-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  padding: 5px;
+  border-radius: 8px;
+  border: 2px solid #667eea;
+}
+
+.btn-cantidad {
+  width: 30px;
+  height: 30px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.btn-cantidad:hover {
+  background: #764ba2;
+  transform: scale(1.1);
+}
+
+.cantidad-display {
+  min-width: 30px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #2d3436;
+}
+
+/* ============================================
+   CARRITO (Derecha) - STICKY
+   ============================================ */
+.carrito-section {
+  position: relative;
+}
+
+.carrito-sticky {
+  position: sticky;
+  top: 100px;
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.carrito-title {
+  font-size: 24px;
+  color: #2d3436;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* ============================================
+   CARRITO VACÍO
+   ============================================ */
+.carrito-vacio {
+  text-align: center;
+  padding: 40px 20px;
+  color: #b2bec3;
+}
+
+.carrito-vacio p:first-child {
+  font-size: 60px;
+  margin-bottom: 15px;
+}
+
+.carrito-vacio p:last-child {
+  font-size: 16px;
+}
+
+/* ============================================
+   ITEMS DEL CARRITO
+   ============================================ */
+.carrito-items {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+.carrito-items::-webkit-scrollbar {
+  width: 6px;
+}
+
+.carrito-items::-webkit-scrollbar-track {
+  background: #f1f3f5;
+  border-radius: 10px;
+}
+
+.carrito-items::-webkit-scrollbar-thumb {
+  background: #667eea;
+  border-radius: 10px;
+}
+
+.carrito-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  margin-bottom: 10px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.carrito-item:hover {
+  background: #e9ecef;
+}
+
+.carrito-item-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.carrito-item-nombre {
+  font-size: 14px;
+  color: #2d3436;
+  font-weight: 600;
+}
+
+.carrito-item-cantidad {
+  font-size: 12px;
+  color: #636e72;
+  background: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.carrito-item-precio {
+  font-size: 14px;
+  color: #00b894;
+  font-weight: 700;
+}
+
+/* ============================================
+   DIVISIÓN Y TOTAL
+   ============================================ */
+.carrito-divider {
+  height: 2px;
+  background: linear-gradient(to right, transparent, #667eea, transparent);
+  margin: 20px 0;
+}
+
+.carrito-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.total-label {
+  font-size: 20px;
+  color: white;
+  font-weight: 700;
+}
+
+.total-precio {
+  font-size: 28px;
+  color: white;
+  font-weight: 700;
+}
+
+/* ============================================
+   BOTONES DEL CARRITO
+   ============================================ */
+.carrito-acciones {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.btn-limpiar {
+  flex: 1;
+  padding: 12px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-limpiar:hover {
+  background: #c0392b;
+  transform: translateY(-2px);
+}
+
+.btn-ordenar {
+  flex: 2;
+  padding: 12px;
+  background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-ordenar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 184, 148, 0.4);
+}
+
+/* ============================================
+   NOTA DEL CARRITO
+   ============================================ */
+.carrito-nota {
+  background: #fff3cd;
+  padding: 12px;
+  border-radius: 8px;
+  border-left: 4px solid #ffc107;
+}
+
+.carrito-nota p {
+  margin: 0;
+  font-size: 13px;
+  color: #856404;
+  line-height: 1.5;
+}
+
+.carrito-nota strong {
+  font-weight: 700;
+}
+
+/* ============================================
+   RESPONSIVE - TABLETS
+   ============================================ */
+@media (max-width: 1024px) {
+  .arma-container {
+    grid-template-columns: 1fr;
+  }
+
+  .carrito-sticky {
+    position: relative;
+    top: 0;
   }
 
   .arma-title {
     font-size: 36px;
   }
+}
 
-  .arma-grid {
-    grid-template-columns: 1fr;
+/* ============================================
+   RESPONSIVE - MÓVILES
+   ============================================ */
+@media (max-width: 768px) {
+  .arma-tu-almuerzo {
+    padding: 90px 15px 40px 15px;
+  }
+
+  .arma-title {
+    font-size: 32px;
+  }
+
+  .arma-subtitle {
+    font-size: 16px;
+  }
+
+  .categoria-title {
+    font-size: 22px;
+  }
+
+  .producto-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .btn-agregar,
+  .cantidad-controls {
+    width: 100%;
+  }
+
+  .carrito-acciones {
+    flex-direction: column;
+  }
+
+  .total-precio {
+    font-size: 24px;
   }
 }
