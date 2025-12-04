@@ -52,13 +52,13 @@ function App() {
               } 
             />
             <Route 
-              path="/panel-admin" 
-              element={
-                <RutaProtegidaAdmin>
-                  <PanelAdmin />
-                </RutaProtegidaAdmin>
-              } 
-            />
+  path="/admin" 
+  element={
+    <RutaProtegidaAdmin>
+      <PanelAdmin />
+    </RutaProtegidaAdmin>
+  } 
+/>
           </Routes>
         </main>
         <Footer />
