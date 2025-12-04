@@ -89,6 +89,9 @@ app.use('/api/auth', authRoutes);
 const reservasRoutes = require('./routes/reservasRoutes')(db);
 app.use('/api/reservas', reservasRoutes);
 
+const adminRoutes = require('./routes/adminRoutes')(db);
+app.use('/api/admin', adminRoutes);
+
 // ==================== RUTA DE PRUEBA ====================
 app.get('/api', (req, res) => {
   res.json({ 

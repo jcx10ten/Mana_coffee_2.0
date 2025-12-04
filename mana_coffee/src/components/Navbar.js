@@ -73,6 +73,18 @@ function Navbar() {
                     >
                       <span>⚙️</span> Mi Perfil
                     </Link>
+
+                    {/* ✅ NUEVO: ACCESO AL PANEL ADMIN (SOLO PARA ADMINISTRADORES) */}
+                    {usuario.rol === 'admin' && (
+                      <Link 
+                        to="/admin" 
+                        className="navbar-usuario-menu-item navbar-admin-link"
+                        onClick={() => setMenuAbierto(false)}
+                      >
+                        <span>👑</span> Panel Admin
+                      </Link>
+                    )}
+                    
                     <button 
                       className="navbar-usuario-menu-item navbar-cerrar-sesion"
                       onClick={cerrarSesion}

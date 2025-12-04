@@ -91,6 +91,47 @@ function FormularioReserva({ cerrarFormulario }) {
   };
 
   // ============================================
+  // FUNCIÓN: Enviar confirmación por WhatsApp
+  // ============================================
+  const enviarConfirmacionWhatsApp = (reserva) => {
+    // Número de WhatsApp de Mana Coffee (CAMBIA ESTE NÚMERO si es necesario)
+    const numeroWhatsApp = '573167231002'; // Formato: código país + número sin espacios ni guiones
+    
+    // Formatear la fecha para que sea más legible
+    const fechaFormateada = new Date(reserva.fecha + 'T00:00:00').toLocaleDateString('es-CO', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+    
+    // Construir el mensaje
+    let mensaje = '📅 *CONFIRMACIÓN DE RESERVA - MANA COFFEE*\n\n';
+    mensaje += '✅ Tu reserva ha sido confirmada con los siguientes datos:\n\n';
+    mensaje += `👤 *Nombre:* ${usuario?.nombre || 'N/A'}\n`;
+    mensaje += `📧 *Email:* ${usuario?.email || 'N/A'}\n`;
+    mensaje += `📱 *Teléfono:* ${reserva.telefono}\n`;
+    mensaje += `👥 *Número de personas:* ${reserva.num_personas}\n`;
+    mensaje += `📆 *Fecha:* ${fechaFormateada}\n`;
+    mensaje += `🕐 *Hora:* ${reserva.hora}\n`;
+    
+    if (reserva.comentarios) {
+      mensaje += `\n💬 *Comentarios:*\n${reserva.comentarios}\n`;
+    }
+    
+    mensaje += `\n📍 *Ubicación:* Mana Coffee\n`;
+    mensaje += `\n⚠️ *Importante:* Por favor, llega con 10 minutos de anticipación.\n`;
+    mensaje += `\n¡Te esperamos! ☕`;
+    
+    // Codificar el mensaje para URL
+    const mensajeCodificado = encodeURIComponent(mensaje);
+    
+    // Abrir WhatsApp
+    const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeCodificado}`;
+    window.open(urlWhatsApp, '_blank');
+  };
+
+  // ============================================
   // FUNCIÓN: Enviar reserva al backend
   // ============================================
   const handleSubmit = async (e) => {
@@ -137,6 +178,9 @@ function FormularioReserva({ cerrarFormulario }) {
       console.log('Reserva creada:', data);
       setSubmitSuccess(true);
 
+      // ✅ ENVIAR CONFIRMACIÓN POR WHATSAPP
+      enviarConfirmacionWhatsApp(data.reserva);
+
       // Cerrar el modal después de 3 segundos
       setTimeout(() => {
         cerrarFormulario();
@@ -182,6 +226,9 @@ function FormularioReserva({ cerrarFormulario }) {
               <h3>¡Reserva Confirmada! ✓</h3>
               <p>Hemos recibido tu reserva correctamente.</p>
               <p>Te enviaremos un correo de confirmación a <strong>{usuario?.email}</strong></p>
+              <p style={{ marginTop: '10px', fontSize: '14px' }}>
+                📱 También se abrirá WhatsApp para que confirmes tu reserva directamente con nosotros.
+              </p>
               <p style={{ marginTop: '20px', fontSize: '14px', color: '#666' }}>
                 Este mensaje se cerrará automáticamente...
               </p>
