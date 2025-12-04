@@ -12,6 +12,9 @@ import Registro from './components/Registro';
 import Reserva from './components/Reserva';
 import MiCuenta from './components/MiCuenta';
 import RutaProtegida from './components/RutaProtegida';
+import PanelAdmin from './components/PanelAdmin';
+import RutaProtegidaAdmin from './components/RutaProtegidaAdmin';
+
 
 function App() {
   return (
@@ -48,6 +51,14 @@ function App() {
                 </RutaProtegida>
               } 
             />
+            <Route 
+  path="/admin" 
+  element={
+    <RutaProtegidaAdmin>
+      <PanelAdmin />
+    </RutaProtegidaAdmin>
+  } 
+/>
           </Routes>
         </main>
         <Footer />

@@ -82,6 +82,39 @@ function ArmaTuAlmuerzo() {
     setCarrito([]);
   };
 
+  // Enviar pedido por WhatsApp
+  const enviarPorWhatsApp = () => {
+    if (carrito.length === 0) {
+      alert('El carrito está vacío. Agrega productos antes de ordenar.');
+      return;
+    }
+
+    // Número de WhatsApp de Mana Coffee (CAMBIA ESTE NÚMERO)
+    const numeroWhatsApp = '573167231002'; // Formato: código país + número sin espacios ni guiones
+    
+    // Construir el mensaje
+    let mensaje = '🍽️ *PEDIDO - MANA COFFEE*\n\n';
+    mensaje += '📋 *Detalle del pedido:*\n';
+    
+    carrito.forEach(item => {
+      mensaje += `• ${item.nombre} x${item.cantidad} - ${(item.precio * item.cantidad).toLocaleString('es-CO')}\n`;
+    });
+    
+    mensaje += `\n💰 *TOTAL: ${calcularTotal().toLocaleString('es-CO')}*\n`;
+    mensaje += `\n📝 *Nota:* Pedido para llevar (+$1.000)\n`;
+    mensaje += `\n✅ Confirmo este pedido`;
+    
+    // Codificar el mensaje para URL
+    const mensajeCodificado = encodeURIComponent(mensaje);
+    
+    // Abrir WhatsApp
+    const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeCodificado}`;
+    window.open(urlWhatsApp, '_blank');
+    
+    // Opcional: Limpiar carrito después de enviar
+    // limpiarCarrito();
+  };
+
   return (
     <section className="arma-tu-almuerzo">
       <div className="arma-header">
@@ -184,8 +217,11 @@ function ArmaTuAlmuerzo() {
                   >
                     🗑️ Limpiar
                   </button>
-                  <button className="btn-ordenar">
-                    Ordenar Ahora
+                  <button 
+                    className="btn-ordenar"
+                    onClick={enviarPorWhatsApp}
+                  >
+                    📱 Ordenar por WhatsApp
                   </button>
                 </div>
 

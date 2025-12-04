@@ -173,4 +173,15 @@
   .navbar-usuario-nombre {
     display: none;
   }
+  .navbar-admin-link {
+  background: linear-gradient(135deg, #ffd700, #ffed4e) !important;
+  color: #333 !important;
+  font-weight: bold !important;
+  border-left: 4px solid #ffa500 !important;
+  }
+
+  .navbar-admin-link:hover {
+  background: linear-gradient(135deg, #ffed4e, #ffd700) !important;
+  transform: translateX(8px) !important;
+  }
 }

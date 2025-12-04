@@ -1,8 +1,3 @@
-// ==========================================
-// RUTAS DE AUTENTICACIÓN
-// Login, Registro, Perfil
-// ==========================================
-
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -116,25 +111,27 @@ router.post('/login', (req, res) => {
         });
       }
 
-      // Crear token JWT
+      // Crear token JWT (✅ CON ROL INCLUIDO)
       const token = jwt.sign(
         { 
           id: usuario.id, 
           email: usuario.email,
-          nombre: usuario.nombre 
+          nombre: usuario.nombre,
+          rol: usuario.rol || 'cliente'
         },
         process.env.JWT_SECRET,
         { expiresIn: '24h' }
       );
 
-      // Responder con token y datos del usuario
+      // Responder con token y datos del usuario (✅ CON ROL INCLUIDO)
       res.json({
         mensaje: 'Login exitoso',
         token: token,
         usuario: {
           id: usuario.id,
           nombre: usuario.nombre,
-          email: usuario.email
+          email: usuario.email,
+          rol: usuario.rol || 'cliente'
         }
       });
     } catch (error) {
@@ -151,7 +148,7 @@ router.post('/login', (req, res) => {
 // ==========================================
 router.get('/perfil', verificarToken, (req, res) => {
   db.get(
-    'SELECT id, nombre, email, fecha_registro FROM usuarios WHERE id = ?', 
+    'SELECT id, nombre, email, rol, fecha_registro FROM usuarios WHERE id = ?', 
     [req.usuario.id], 
     (err, usuario) => {
       if (err) {
@@ -175,7 +172,7 @@ router.get('/perfil', verificarToken, (req, res) => {
 // ==========================================
 router.get('/usuarios', (req, res) => {
   db.all(
-    'SELECT id, nombre, email, fecha_registro FROM usuarios', 
+    'SELECT id, nombre, email, rol, fecha_registro FROM usuarios', 
     [], 
     (err, usuarios) => {
       if (err) {
