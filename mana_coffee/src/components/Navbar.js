@@ -34,6 +34,7 @@ function Navbar() {
           <Link to="/" className="navbar-link">Inicio</Link>
           <Link to="/arma-tu-almuerzo" className="navbar-link">Arma Tu Almuerzo</Link>
           <Link to="/contactanos" className="navbar-link">Contáctanos</Link>
+          <Link to="/menu" className="navbar-link">Menú</Link>
           
           {/* Si NO hay usuario logueado */}
           {!usuario ? (

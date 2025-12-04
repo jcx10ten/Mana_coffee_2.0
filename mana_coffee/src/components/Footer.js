@@ -8,8 +8,7 @@ function Footer() {
         <div className="footer-section">
           <h3 className="footer-title">☕ Mana Coffee</h3>
           <p className="footer-text">
-            El mejor café de Ocaña, Norte de Santander. 
-            Ven y disfruta de una experiencia única.
+            El sabor de la compañia es insuperable
           </p>
         </div>
 

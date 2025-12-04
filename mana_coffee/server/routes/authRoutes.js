@@ -113,27 +113,26 @@ router.post('/login', (req, res) => {
 
       // Crear token JWT (✅ CON ROL INCLUIDO)
       const token = jwt.sign(
-        { 
-          id: usuario.id, 
-          email: usuario.email,
-          nombre: usuario.nombre,
-          rol: usuario.rol || 'cliente'
-        },
-        process.env.JWT_SECRET,
-        { expiresIn: '24h' }
-      );
+  { 
+    id: usuario.id, 
+    email: usuario.email,
+    nombre: usuario.nombre 
+  },
+  process.env.JWT_SECRET,
+  { expiresIn: '24h' }
+);
 
       // Responder con token y datos del usuario (✅ CON ROL INCLUIDO)
       res.json({
-        mensaje: 'Login exitoso',
-        token: token,
-        usuario: {
-          id: usuario.id,
-          nombre: usuario.nombre,
-          email: usuario.email,
-          rol: usuario.rol || 'cliente'
-        }
-      });
+  mensaje: 'Login exitoso',
+  token: token,
+  usuario: {
+    id: usuario.id,
+    nombre: usuario.nombre,
+    email: usuario.email,
+    rol: usuario.rol || 'cliente'  // ✅ AGREGAR ESTA LÍNEA
+  }
+});
     } catch (error) {
       console.error('Error al verificar contraseña:', error);
       res.status(500).json({ error: 'Error en el servidor' });

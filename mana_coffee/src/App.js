@@ -15,7 +15,6 @@ import RutaProtegida from './components/RutaProtegida';
 import PanelAdmin from './components/PanelAdmin';
 import RutaProtegidaAdmin from './components/RutaProtegidaAdmin';
 
-
 function App() {
   return (
     <BrowserRouter>
@@ -24,12 +23,13 @@ function App() {
         <main className="main-content">
           <Routes>
             <Route path="/registro" element={<Registro />} />
-            <Route path="/" element={
-              <>
-                <Carousel />
-                <Menu />
-              </>
-            } />
+            
+            {/* ✅ PÁGINA PRINCIPAL - SOLO CARRUSEL */}
+            <Route path="/" element={<Carousel />} />
+            
+            {/* ✅ MENÚ EN PÁGINA SEPARADA */}
+            <Route path="/menu" element={<Menu />} />
+            
             <Route path="/arma-tu-almuerzo" element={<ArmaTuAlmuerzo />} />
             <Route path="/contactanos" element={<Contactenos />} />
             <Route path="/iniciar-sesion" element={<IniciarSesion />} />
