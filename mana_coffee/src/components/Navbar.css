@@ -1,118 +1,199 @@
-.navbar {
-  background: linear-gradient(to right, #667eea, #764ba2);
-  padding: 20px 40px;
+/* ============================================
+   NAVBAR MANA COFFEE - DISEÑO PERSONALIZADO
+   Fondo café oscuro con texto beige claro
+   ============================================ */
+
+.navbar-mana {
+  width: 100%;
+  background-color: #1E0D00; /* Café oscuro */
+  padding: 15px 50px;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-.navbar-container {
+.navbar-container-mana {
+  max-width: 1400px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.navbar-logo {
-  color: white;
-  text-decoration: none;
-  font-size: 28px;
-  font-weight: bold;
-  transition: opacity 0.3s;
-}
-
-.navbar-logo:hover {
-  opacity: 0.9;
-}
-
-.navbar-menu {
-  display: flex;
-  gap: 30px;
-  align-items: center;
-}
-
-.navbar-link {
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: 600;
-  padding: 8px 16px;
-  border-radius: 5px;
-  transition: all 0.3s;
-}
-
-.navbar-link:hover {
-  color: #ffd700;
-  background-color: rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
-}
-
-.navbar-link-registro {
-  background-color: rgba(255, 255, 255, 0.2);
-  border: 2px solid white;
 }
 
 /* ============================================
-   MENÚ DE USUARIO DESPLEGABLE
+   LOGO
    ============================================ */
-.navbar-usuario {
+.navbar-logo-mana {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.navbar-logo-mana:hover {
+  transform: scale(1.05);
+}
+
+/* Cuando agregues tu logo real */
+.logo-img {
+  height: 60px;
+  width: auto;
+}
+
+/* Placeholder temporal del logo */
+.logo-placeholder {
+  font-size: 40px;
+  width: 60px;
+  height: 60px;
+  background: rgba(238, 226, 221, 0.1);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================
+   MENÚ DE NAVEGACIÓN
+   ============================================ */
+.navbar-menu-mana {
+  display: flex;
+  align-items: center;
+  gap: 45px;
+}
+
+.navbar-link-mana {
+  color: #EEE2DD; /* ✅ Texto beige claro normal */
+  background-color: transparent;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  position: relative;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+/* Efecto hover */
+.navbar-link-mana:hover {
+  background-color: rgba(238, 226, 221, 0.1);
+  color: #FFDBCD; /* ✅ Cambia a durazno al pasar el mouse */
+}
+
+/* ============================================
+   ANIMACIÓN CUANDO ESTÁ ACTIVO
+   Brillo sutil y cambio de color
+   ============================================ */
+.navbar-link-mana.active {
+  background-color: rgba(255, 219, 205, 0.15);
+  color: #FFDBCD; /* ✅ Texto durazno cuando está activo */
+  box-shadow: 
+    0 0 15px rgba(255, 219, 205, 0.4),
+    0 0 25px rgba(255, 219, 205, 0.2),
+    inset 0 0 10px rgba(255, 219, 205, 0.1);
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 15px rgba(255, 219, 205, 0.4),
+      0 0 25px rgba(255, 219, 205, 0.2),
+      inset 0 0 10px rgba(255, 219, 205, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 20px rgba(255, 219, 205, 0.6),
+      0 0 35px rgba(255, 219, 205, 0.3),
+      inset 0 0 15px rgba(255, 219, 205, 0.2);
+  }
+}
+
+/* ============================================
+   BOTÓN REGISTRARSE
+   ============================================ */
+.registrarse-btn {
+  background-color: rgba(255, 219, 205, 0.1);
+  border: 2px solid rgba(255, 219, 205, 0.3);
+}
+
+.registrarse-btn:hover {
+  background-color: rgba(255, 219, 205, 0.2);
+  border-color: #FFDBCD;
+  color: #FFDBCD;
+}
+
+.registrarse-btn.active {
+  background-color: rgba(255, 219, 205, 0.2);
+  border-color: #FFDBCD;
+  color: #FFDBCD;
+}
+
+/* ============================================
+   MENÚ DESPLEGABLE DE USUARIO
+   ============================================ */
+.navbar-usuario-mana {
   position: relative;
 }
 
-.navbar-usuario-btn {
+.navbar-usuario-btn-mana {
   display: flex;
   align-items: center;
   gap: 8px;
-  background-color: rgba(255, 255, 255, 0.15);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  color: white;
-  padding: 8px 16px;
+  background-color: rgba(238, 226, 221, 0.1);
+  border: 2px solid rgba(238, 226, 221, 0.3);
+  color: #EEE2DD; /* ✅ Texto beige claro */
+  padding: 10px 20px;
   border-radius: 25px;
   cursor: pointer;
-  transition: all 0.3s;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
 }
 
-.navbar-usuario-btn:hover {
-  background-color: rgba(255, 255, 255, 0.25);
-  transform: translateY(-2px);
+.navbar-usuario-btn-mana:hover {
+  background-color: rgba(255, 219, 205, 0.2);
+  border-color: #FFDBCD;
+  color: #FFDBCD; /* ✅ Cambia a durazno al hover */
 }
 
-.navbar-usuario-icono {
-  font-size: 20px;
+.usuario-icono {
+  font-size: 18px;
 }
 
-.navbar-usuario-nombre {
-  max-width: 150px;
+.usuario-nombre {
+  max-width: 120px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.navbar-usuario-flecha {
-  font-size: 12px;
+.usuario-flecha {
+  font-size: 10px;
+  margin-left: 5px;
 }
 
 /* Menú desplegable */
-.navbar-usuario-menu {
+.navbar-usuario-menu-mana {
   position: absolute;
   top: calc(100% + 10px);
   right: 0;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  min-width: 200px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  min-width: 220px;
   overflow: hidden;
   animation: slideDown 0.3s ease;
+  border: 2px solid #FFDBCD;
 }
 
 @keyframes slideDown {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-15px);
   }
   to {
     opacity: 1;
@@ -120,68 +201,108 @@
   }
 }
 
-.navbar-usuario-menu-item {
+.menu-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 20px;
-  color: #333;
+  gap: 12px;
+  padding: 14px 20px;
+  color: #1E0D00; /* Texto café oscuro en el menú desplegable */
   text-decoration: none;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
   border: none;
   background: none;
   width: 100%;
   text-align: left;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s ease;
 }
 
-.navbar-usuario-menu-item:hover {
-  background-color: #f5f5f5;
+.menu-item:hover {
+  background-color: rgba(255, 219, 205, 0.3);
 }
 
-.navbar-cerrar-sesion {
-  color: #e74c3c;
+.admin-link {
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  color: #1E0D00;
+  font-weight: 700;
+  border-top: 2px solid #ffa500;
+}
+
+.admin-link:hover {
+  background: linear-gradient(135deg, #ffed4e, #ffd700);
+}
+
+.cerrar-sesion {
+  color: #c54a3a;
   border-top: 1px solid #eee;
 }
 
-.navbar-cerrar-sesion:hover {
+.cerrar-sesion:hover {
   background-color: #fee;
 }
 
-/* Responsive */
+/* ============================================
+   RESPONSIVE - TABLETS
+   ============================================ */
+@media (max-width: 1024px) {
+  .navbar-mana {
+    padding: 15px 30px;
+  }
+
+  .navbar-menu-mana {
+    gap: 25px;
+  }
+
+  .navbar-link-mana {
+    font-size: 14px;
+    padding: 8px 15px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE - MÓVILES
+   ============================================ */
 @media (max-width: 768px) {
-  .navbar {
-    padding: 15px 20px;
+  .navbar-mana {
+    padding: 12px 20px;
   }
 
-  .navbar-logo {
-    font-size: 22px;
+  .navbar-container-mana {
+    flex-wrap: wrap;
+    gap: 15px;
   }
 
-  .navbar-menu {
+  .navbar-menu-mana {
     flex-wrap: wrap;
     gap: 10px;
+    width: 100%;
+    justify-content: center;
   }
 
-  .navbar-link {
-    font-size: 16px;
-    padding: 6px 12px;
+  .navbar-link-mana {
+    font-size: 12px;
+    padding: 8px 12px;
   }
 
-  .navbar-usuario-nombre {
+  .logo-placeholder {
+    font-size: 30px;
+    width: 45px;
+    height: 45px;
+  }
+
+  .usuario-nombre {
     display: none;
   }
-  .navbar-admin-link {
-  background: linear-gradient(135deg, #ffd700, #ffed4e) !important;
-  color: #333 !important;
-  font-weight: bold !important;
-  border-left: 4px solid #ffa500 !important;
+}
+
+@media (max-width: 480px) {
+  .navbar-link-mana {
+    font-size: 11px;
+    padding: 6px 10px;
   }
 
-  .navbar-admin-link:hover {
-  background: linear-gradient(135deg, #ffed4e, #ffd700) !important;
-  transform: translateX(8px) !important;
+  .navbar-menu-mana {
+    gap: 5px;
   }
 }
