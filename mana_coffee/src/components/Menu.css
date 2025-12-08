@@ -1,37 +1,137 @@
-/* ============================================
-   MENU.CSS - MANA COFFEE
-   Menú con acordeones desplegables
-   ============================================ */
-
-.menu-page {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  padding: 100px 20px 60px 20px;
-}
-
-/* ============================================
-   HEADER
-   ============================================ */
-.menu-header {
+.pdf-header-info {
   text-align: center;
-  margin-bottom: 50px;
+  padding-bottom: 20px;
+  border-bottom: 3px solid #f0f0f0;
 }
 
-.menu-title {
-  font-size: 52px;
+.pdf-title {
+  font-size: 32px;
   color: #2d3436;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   font-weight: 700;
 }
 
-.menu-subtitle {
-  font-size: 22px;
+.pdf-date {
+  font-size: 16px;
   color: #636e72;
-  font-weight: 400;
+  font-style: italic;
+}
+
+.pdf-viewer-wrapper {
+  width: 100%;
+  height: 800px;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 3px solid #e0e0e0;
+  background: #f8f9fa;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.pdf-viewer {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.pdf-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 20px;
+}
+
+.btn-ver-pdf,
+.btn-descargar-pdf {
+  padding: 15px 35px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-ver-pdf {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+}
+
+.btn-ver-pdf:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-descargar-pdf {
+  background: white;
+  color: #667eea;
+  border: 2px solid #667eea;
+}
+
+.btn-descargar-pdf:hover {
+  background: #667eea;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+.pdf-no-disponible {
+  text-align: center;
+  padding: 80px 40px;
+  background: #f8f9fa;
+  border-radius: 15px;
+  border: 2px dashed #ddd;
+}
+
+.pdf-no-disponible-icon {
+  font-size: 64px;
+  margin-bottom: 20px;
+  opacity: 0.5;
+}
+
+.pdf-no-disponible-text {
+  font-size: 24px;
+  color: #2d3436;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.pdf-no-disponible-subtext {
+  font-size: 16px;
+  color: #636e72;
 }
 
 /* ============================================
-   CONTENEDOR PRINCIPAL
+   SEPARADOR VISUAL
+   ============================================ */
+.menu-separator {
+  max-width: 1200px;
+  margin: 0 auto 50px auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.separator-line {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #ddd, transparent);
+}
+
+.separator-text {
+  font-size: 18px;
+  color: #636e72;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0 20px;
+  white-space: nowrap;
+}
+
+/* ============================================
+   CONTENEDOR PRINCIPAL (Menú desplegable)
    ============================================ */
 .menu-container {
   max-width: 1200px;
@@ -177,6 +277,36 @@
     font-size: 18px;
   }
 
+  .menu-pdf-section {
+    padding: 25px;
+  }
+
+  .pdf-title {
+    font-size: 26px;
+  }
+
+  .pdf-viewer-wrapper {
+    height: 600px;
+  }
+
+  .pdf-actions {
+    flex-direction: column;
+  }
+
+  .btn-ver-pdf,
+  .btn-descargar-pdf {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .menu-separator {
+    margin: 40px auto;
+  }
+
+  .separator-text {
+    font-size: 16px;
+  }
+
   .menu-categoria-header {
     padding: 20px;
   }
@@ -203,6 +333,27 @@
     font-size: 32px;
   }
 
+  .menu-pdf-section {
+    padding: 20px;
+  }
+
+  .pdf-title {
+    font-size: 22px;
+  }
+
+  .pdf-date {
+    font-size: 14px;
+  }
+
+  .pdf-viewer-wrapper {
+    height: 500px;
+  }
+
+  .separator-text {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+
   .menu-categoria-header {
     padding: 15px;
   }
@@ -226,5 +377,11 @@
 
   .menu-item-precio {
     font-size: 20px;
+  }
+
+  .btn-ver-pdf,
+  .btn-descargar-pdf {
+    padding: 12px 25px;
+    font-size: 14px;
   }
 }

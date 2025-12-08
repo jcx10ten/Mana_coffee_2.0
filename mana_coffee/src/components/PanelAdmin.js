@@ -17,6 +17,12 @@ function PanelAdmin() {
   const [reservaEditar, setReservaEditar] = useState(null);
   const [mostrarModalEditar, setMostrarModalEditar] = useState(false);
 
+  // ✅ NUEVO: Estados para actualizar menú
+  const [mostrarModalMenu, setMostrarModalMenu] = useState(false);
+  const [archivoMenu, setArchivoMenu] = useState(null);
+  const [subiendoMenu, setSubiendoMenu] = useState(false);
+  const [menuActual, setMenuActual] = useState(null);
+
   useEffect(() => {
     if (vista === 'dashboard') {
       cargarDashboard();
@@ -26,6 +32,84 @@ function PanelAdmin() {
       cargarUsuarios();
     }
   }, [vista]);
+
+  // ✅ NUEVO: Cargar menú actual al montar
+  useEffect(() => {
+    cargarMenuActual();
+  }, []);
+
+  // ============================================
+  // ✅ NUEVO: CARGAR MENÚ ACTUAL
+  // ============================================
+  const cargarMenuActual = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch('http://localhost:5000/api/menu/actual', {
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+
+      if (!response.ok) throw new Error('Error al cargar menú');
+
+      const data = await response.json();
+      setMenuActual(data.menu);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  // ============================================
+  // ✅ NUEVO: SUBIR NUEVO MENÚ
+  // ============================================
+  const subirNuevoMenu = async (e) => {
+    e.preventDefault();
+    
+    if (!archivoMenu) {
+      alert('Por favor selecciona un archivo PDF');
+      return;
+    }
+
+    // Validar que sea PDF
+    if (archivoMenu.type !== 'application/pdf') {
+      alert('Solo se permiten archivos PDF');
+      return;
+    }
+
+    // Validar tamaño (10MB máximo)
+    if (archivoMenu.size > 10 * 1024 * 1024) {
+      alert('El archivo es muy grande. Máximo 10MB');
+      return;
+    }
+
+    setSubiendoMenu(true);
+
+    try {
+      const token = localStorage.getItem('token');
+      const formData = new FormData();
+      formData.append('menu', archivoMenu);
+
+      const response = await fetch('http://localhost:5000/api/menu/subir', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        },
+        body: formData
+      });
+
+      if (!response.ok) throw new Error('Error al subir menú');
+
+      const data = await response.json();
+      alert('✅ ' + data.mensaje);
+      
+      setMostrarModalMenu(false);
+      setArchivoMenu(null);
+      cargarMenuActual();
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error al subir el menú');
+    } finally {
+      setSubiendoMenu(false);
+    }
+  };
 
   // ============================================
   // CARGAR DASHBOARD
@@ -260,6 +344,14 @@ function PanelAdmin() {
           >
             👥 Usuarios
           </button>
+
+          {/* ✅ NUEVO: BOTÓN PARA ACTUALIZAR MENÚ */}
+          <button 
+            className="admin-menu-btn"
+            onClick={() => setMostrarModalMenu(true)}
+          >
+            📄 Actualizar Menú
+          </button>
         </nav>
       </aside>
 
@@ -271,6 +363,15 @@ function PanelAdmin() {
             {vista === 'reservas' && '📅 Gestión de Reservas'}
             {vista === 'usuarios' && '👥 Gestión de Usuarios'}
           </h1>
+
+          {/* ✅ NUEVO: Info del menú actual */}
+          {menuActual && (
+            <div className="menu-actual-info">
+              <span className="menu-actual-badge">
+                📄 Menú actualizado: {new Date(menuActual.fecha_subida).toLocaleDateString('es-CO')}
+              </span>
+            </div>
+          )}
         </header>
 
         <div className="admin-content">
@@ -530,6 +631,80 @@ function PanelAdmin() {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* ========== ✅ NUEVO: MODAL ACTUALIZAR MENÚ ========== */}
+      {mostrarModalMenu && (
+        <div className="modal-overlay" onClick={() => setMostrarModalMenu(false)}>
+          <div className="modal-container modal-menu" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h2>📄 Actualizar Menú</h2>
+              <button onClick={() => setMostrarModalMenu(false)}>✕</button>
+            </div>
+
+            <div className="modal-form">
+              <div className="menu-upload-info">
+                <p className="info-text">
+                  <strong>ℹ️ Importante:</strong> Al subir un nuevo PDF del menú, 
+                  el anterior será reemplazado automáticamente para mantener el sitio limpio.
+                </p>
+                
+                {menuActual && (
+                  <div className="menu-actual-preview">
+                    <p><strong>Menú actual:</strong></p>
+                    <p>📅 Subido: {new Date(menuActual.fecha_subida).toLocaleDateString('es-CO')}</p>
+                    <p>📄 Archivo: {menuActual.nombre_archivo}</p>
+                  </div>
+                )}
+              </div>
+
+              <form onSubmit={subirNuevoMenu} className="upload-form">
+                <div className="file-input-wrapper">
+                  <label className="file-input-label">
+                    <input
+                      type="file"
+                      accept=".pdf"
+                      onChange={(e) => setArchivoMenu(e.target.files[0])}
+                      className="file-input"
+                    />
+                    <span className="file-input-button">
+                      {archivoMenu ? '✅ ' + archivoMenu.name : '📁 Seleccionar PDF'}
+                    </span>
+                  </label>
+                  
+                  {archivoMenu && (
+                    <div className="file-info">
+                      <p>Tamaño: {(archivoMenu.size / 1024 / 1024).toFixed(2)} MB</p>
+                    </div>
+                  )}
+                </div>
+
+                <div className="upload-requirements">
+                  <p>✓ Solo archivos PDF</p>
+                  <p>✓ Tamaño máximo: 10MB</p>
+                  <p>✓ El archivo anterior será eliminado</p>
+                </div>
+
+                <div className="modal-actions">
+                  <button 
+                    type="button" 
+                    onClick={() => setMostrarModalMenu(false)}
+                    disabled={subiendoMenu}
+                  >
+                    Cancelar
+                  </button>
+                  <button 
+                    type="submit" 
+                    className="btn-guardar"
+                    disabled={!archivoMenu || subiendoMenu}
+                  >
+                    {subiendoMenu ? '⏳ Subiendo...' : '📤 Subir Menú'}
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       )}

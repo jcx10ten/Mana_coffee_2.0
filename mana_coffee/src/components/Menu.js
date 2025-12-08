@@ -1,8 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Menu.css';
 
 function Menu() {
   const [categoriaAbierta, setCategoriaAbierta] = useState(null);
+  const [menuPDF, setMenuPDF] = useState(null);
+  const [cargandoPDF, setCargandoPDF] = useState(true);
+
+  // ============================================
+  // CARGAR MENÚ EN PDF AL MONTAR
+  // ============================================
+  useEffect(() => {
+    cargarMenuPDF();
+  }, []);
+
+  const cargarMenuPDF = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/menu/actual');
+      
+      if (!response.ok) throw new Error('Error al cargar menú');
+
+      const data = await response.json();
+      setMenuPDF(data.menu);
+    } catch (error) {
+      console.error('Error al cargar menú PDF:', error);
+    } finally {
+      setCargandoPDF(false);
+    }
+  };
 
   // Toggle para abrir/cerrar categorías
   const toggleCategoria = (categoria) => {
@@ -94,6 +118,79 @@ function Menu() {
         <p className="menu-subtitle">Explora nuestras deliciosas opciones</p>
       </div>
 
+      {/* ============================================
+          ✅ SECCIÓN DEL PDF DEL MENÚ (ARRIBA)
+          ============================================ */}
+      <div className="menu-pdf-section">
+        {cargandoPDF ? (
+          <div className="pdf-loading">
+            <div className="loading-spinner"></div>
+            <p>Cargando menú...</p>
+          </div>
+        ) : menuPDF ? (
+          <div className="pdf-container">
+            <div className="pdf-header-info">
+              <h2 className="pdf-title">📄 Menú Actualizado</h2>
+              <p className="pdf-date">
+                Última actualización: {new Date(menuPDF.fecha_subida).toLocaleDateString('es-CO', {
+                  day: 'numeric',
+                  month: 'long',
+                  year: 'numeric'
+                })}
+              </p>
+            </div>
+            
+            <div className="pdf-viewer-wrapper">
+              <iframe
+                src={`http://localhost:5000/api/menu/pdf/${menuPDF.nombre_archivo}`}
+                className="pdf-viewer"
+                title="Menú Mana Coffee"
+              />
+            </div>
+
+            <div className="pdf-actions">
+              <a 
+                href={`http://localhost:5000/api/menu/pdf/${menuPDF.nombre_archivo}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ver-pdf"
+              >
+                🔍 Ver en pantalla completa
+              </a>
+              <a 
+                href={`http://localhost:5000/api/menu/pdf/${menuPDF.nombre_archivo}`}
+                download
+                className="btn-descargar-pdf"
+              >
+                ⬇️ Descargar PDF
+              </a>
+            </div>
+          </div>
+        ) : (
+          <div className="pdf-no-disponible">
+            <p className="pdf-no-disponible-icon">📄</p>
+            <p className="pdf-no-disponible-text">
+              Menú en PDF no disponible en este momento
+            </p>
+            <p className="pdf-no-disponible-subtext">
+              Por favor, consulta el menú detallado más abajo
+            </p>
+          </div>
+        )}
+      </div>
+
+      {/* ============================================
+          SEPARADOR VISUAL
+          ============================================ */}
+      <div className="menu-separator">
+        <div className="separator-line"></div>
+        <span className="separator-text">O explora por categorías</span>
+        <div className="separator-line"></div>
+      </div>
+
+      {/* ============================================
+          MENÚ DESPLEGABLE (ABAJO)
+          ============================================ */}
       <div className="menu-container">
         {/* CAFETERÍA */}
         <div className="menu-categoria">
