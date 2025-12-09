@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -28,6 +29,9 @@ if (JWT_SECRET === 'mi_clave_super_secreta' || JWT_SECRET.length < 10) {
 app.use(cors());
 app.use(express.json());
 
+// ✅ NUEVO: Servir archivos estáticos de la carpeta uploads
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 // ==================== CONEXIÓN A BASE DE DATOS ====================
 const db = new sqlite3.Database(process.env.DB_PATH || './database.db', (err) => {
   if (err) {
@@ -47,6 +51,7 @@ db.run(`
     nombre TEXT NOT NULL,
     email TEXT UNIQUE NOT NULL,
     password TEXT NOT NULL,
+    rol TEXT DEFAULT 'cliente',
     fecha_registro DATETIME DEFAULT CURRENT_TIMESTAMP
   )
 `, (err) => {
@@ -89,18 +94,25 @@ app.use('/api/auth', authRoutes);
 const reservasRoutes = require('./routes/reservasRoutes')(db);
 app.use('/api/reservas', reservasRoutes);
 
+// Importar y configurar rutas de administración
 const adminRoutes = require('./routes/adminRoutes')(db);
 app.use('/api/admin', adminRoutes);
+
+// ✅ NUEVO: Importar y configurar rutas de menú
+const menuRoutes = require('./routes/menuRoutes')(db);
+app.use('/api/menu', menuRoutes);
 
 // ==================== RUTA DE PRUEBA ====================
 app.get('/api', (req, res) => {
   res.json({ 
     mensaje: '✅ Servidor de Mana Coffee funcionando',
-    version: '2.0.0 - Modular',
+    version: '2.1.0 - Con gestión de menú en PDF',
     timestamp: new Date().toISOString(),
     rutas_disponibles: {
       autenticacion: '/api/auth',
-      reservas: '/api/reservas'
+      reservas: '/api/reservas',
+      admin: '/api/admin',
+      menu: '/api/menu'
     }
   });
 });
@@ -124,5 +136,7 @@ app.listen(PORT, () => {
   console.log('📁 Estructura modular:');
   console.log('   └── /api/auth      (login, registro, perfil)');
   console.log('   └── /api/reservas  (CRUD de reservas)');
+  console.log('   └── /api/admin     (panel administrativo)');
+  console.log('   └── /api/menu      (gestión de menú en PDF)');
   console.log('='.repeat(60));
 });

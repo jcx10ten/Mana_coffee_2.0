@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
+import logoBlanco from '../assets/images/logo-blanco.png';
 
 function Navbar() {
   const [usuario, setUsuario] = useState(null);
@@ -8,7 +9,6 @@ function Navbar() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Verificar si hay usuario logueado
     const usuarioGuardado = localStorage.getItem('usuario');
     if (usuarioGuardado) {
       setUsuario(JSON.parse(usuarioGuardado));
@@ -26,28 +26,28 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-container">
+        {/* LOGO */}
         <Link to="/" className="navbar-logo">
-          ☕ Mana Coffee
+          <img src={logoBlanco} alt="Mana Coffee" className="navbar-logo-img" />
         </Link>
         
+        {/* MENÚ DE NAVEGACIÓN */}
         <div className="navbar-menu">
-          <Link to="/" className="navbar-link">Inicio</Link>
-          <Link to="/arma-tu-almuerzo" className="navbar-link">Arma Tu Almuerzo</Link>
-          <Link to="/contactanos" className="navbar-link">Contáctanos</Link>
-          <Link to="/menu" className="navbar-link">Menú</Link>
-          
-          {/* Si NO hay usuario logueado */}
           {!usuario ? (
             <>
-              <Link to="/iniciar-sesion" className="navbar-link">Iniciar Sesión</Link>
-              <Link to="/registro" className="navbar-link navbar-link-registro">Registrarse</Link>
+              <Link to="/" className="navbar-link">¿QUIÉNES SOMOS?</Link>
+              <Link to="/menu" className="navbar-link">MENÚ</Link>
+              <Link to="/arma-tu-almuerzo" className="navbar-link">ARMA TU ALMUERZO</Link>
+              <Link to="/iniciar-sesion" className="navbar-link">INICIAR SESIÓN</Link>
+              <Link to="/registro" className="navbar-link navbar-link-registro">REGISTRARSE</Link>
             </>
           ) : (
-            /* Si HAY usuario logueado */
             <>
-              <Link to="/reservar" className="navbar-link">Reservar</Link>
+              <Link to="/" className="navbar-link">¿QUIÉNES SOMOS?</Link>
+              <Link to="/menu" className="navbar-link">MENÚ</Link>
+              <Link to="/arma-tu-almuerzo" className="navbar-link">ARMA TU ALMUERZO</Link>
+              <Link to="/reservar" className="navbar-link">RESERVAR</Link>
               
-              {/* Menú desplegable del usuario */}
               <div className="navbar-usuario">
                 <button 
                   className="navbar-usuario-btn"
@@ -65,24 +65,16 @@ function Navbar() {
                       className="navbar-usuario-menu-item"
                       onClick={() => setMenuAbierto(false)}
                     >
-                      <span>📋</span> Mis Reservas
+                      📋 Mis Reservas
                     </Link>
-                    <Link 
-                      to="/mi-perfil" 
-                      className="navbar-usuario-menu-item"
-                      onClick={() => setMenuAbierto(false)}
-                    >
-                      <span>⚙️</span> Mi Perfil
-                    </Link>
-
-                    {/* ✅ NUEVO: ACCESO AL PANEL ADMIN (SOLO PARA ADMINISTRADORES) */}
+                    
                     {usuario.rol === 'admin' && (
                       <Link 
                         to="/admin" 
                         className="navbar-usuario-menu-item navbar-admin-link"
                         onClick={() => setMenuAbierto(false)}
                       >
-                        <span>👑</span> Panel Admin
+                        👑 Panel Admin
                       </Link>
                     )}
                     
@@ -90,7 +82,7 @@ function Navbar() {
                       className="navbar-usuario-menu-item navbar-cerrar-sesion"
                       onClick={cerrarSesion}
                     >
-                      <span>🚪</span> Cerrar Sesión
+                      🚪 Cerrar Sesión
                     </button>
                   </div>
                 )}

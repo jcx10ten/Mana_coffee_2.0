@@ -116,7 +116,8 @@ router.post('/login', (req, res) => {
   { 
     id: usuario.id, 
     email: usuario.email,
-    nombre: usuario.nombre 
+    nombre: usuario.nombre,
+    rol: usuario.rol || 'cliente' 
   },
   process.env.JWT_SECRET,
   { expiresIn: '24h' }
