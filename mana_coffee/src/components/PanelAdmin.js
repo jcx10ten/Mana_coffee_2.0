@@ -74,9 +74,9 @@ function PanelAdmin() {
       return;
     }
 
-    // Validar tamaño (10MB máximo)
-    if (archivoMenu.size > 10 * 1024 * 1024) {
-      alert('El archivo es muy grande. Máximo 10MB');
+    // Validar tamaño (50MB máximo)
+    if (archivoMenu.size > 50 * 1024 * 1024) {
+      alert('El archivo es muy grande. Máximo 50MB');
       return;
     }
 
@@ -683,7 +683,7 @@ function PanelAdmin() {
 
                 <div className="upload-requirements">
                   <p>✓ Solo archivos PDF</p>
-                  <p>✓ Tamaño máximo: 10MB</p>
+                  <p>✓ Tamaño máximo: 50MB</p>
                   <p>✓ El archivo anterior será eliminado</p>
                 </div>
 
