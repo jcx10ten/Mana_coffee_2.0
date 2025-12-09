@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import './Navbar.css';
 import logoBlanco from '../assets/images/logo-blanco.png';
 
 function Navbar() {
   const [usuario, setUsuario] = useState(null);
   const [menuAbierto, setMenuAbierto] = useState(false);
+  const [brilloStyle, setBrilloStyle] = useState({});
+  const navRef = useRef(null);
+  const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,6 +17,47 @@ function Navbar() {
       setUsuario(JSON.parse(usuarioGuardado));
     }
   }, []);
+
+  // ✅ EFECTO PARA MOVER EL BRILLO AL LINK ACTIVO
+  useEffect(() => {
+    const updateBrilloPosition = () => {
+      if (!navRef.current) return;
+
+      // Obtener todos los links del navbar
+      const links = navRef.current.querySelectorAll('.navbar-link');
+      let activeLink = null;
+
+      // Encontrar el link activo basándose en la ruta actual
+      links.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === location.pathname) {
+          activeLink = link;
+        }
+        // Para la página principal
+        if (location.pathname === '/' && href === '/') {
+          activeLink = link;
+        }
+      });
+
+      if (activeLink) {
+        const rect = activeLink.getBoundingClientRect();
+        const navRect = navRef.current.getBoundingClientRect();
+        
+        setBrilloStyle({
+          left: `${rect.left - navRect.left}px`,
+          width: `${rect.width}px`,
+          opacity: 1
+        });
+      } else {
+        setBrilloStyle({ opacity: 0 });
+      }
+    };
+
+    updateBrilloPosition();
+    window.addEventListener('resize', updateBrilloPosition);
+
+    return () => window.removeEventListener('resize', updateBrilloPosition);
+  }, [location.pathname, usuario]);
 
   const cerrarSesion = () => {
     localStorage.removeItem('token');
@@ -32,7 +76,10 @@ function Navbar() {
         </Link>
         
         {/* MENÚ DE NAVEGACIÓN */}
-        <div className="navbar-menu">
+        <div className="navbar-menu" ref={navRef}>
+          {/* ✅ BRILLO ANIMADO */}
+          <div className="navbar-brillo" style={brilloStyle}></div>
+          
           {!usuario ? (
             <>
               <Link to="/" className="navbar-link">¿QUIÉNES SOMOS?</Link>
