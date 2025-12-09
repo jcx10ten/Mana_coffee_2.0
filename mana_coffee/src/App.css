@@ -5,6 +5,17 @@
 }
 
 body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.main-content {
+  margin: 0;
+  padding: 0;
+}
+
+body {
   font-family: 'Arial', 'Helvetica', sans-serif;
   overflow-x: hidden;
 }

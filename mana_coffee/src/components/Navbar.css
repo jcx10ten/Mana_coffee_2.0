@@ -1,199 +1,172 @@
 /* ============================================
-   NAVBAR MANA COFFEE - DISEÑO PERSONALIZADO
-   Fondo café oscuro con texto beige claro
+   NAVBAR - DISEÑO PROFESIONAL CON BRILLOS
    ============================================ */
 
-.navbar-mana {
-  width: 100%;
-  background-color: #1E0D00; /* Café oscuro */
-  padding: 15px 50px;
+.navbar {
+  background: #1E0D00;
+  padding: 20px 80px;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5),
+              0 0 40px rgba(255, 255, 255, 0.05);
 }
 
-.navbar-container-mana {
-  max-width: 1400px;
-  margin: 0 auto;
+.navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 1600px;
+  margin: 0 auto;
 }
 
 /* ============================================
    LOGO
    ============================================ */
-.navbar-logo-mana {
+.navbar-logo {
   display: flex;
   align-items: center;
   text-decoration: none;
+}
+
+.navbar-logo-img {
+  height: 70px;
+  width: auto;
+  filter: drop-shadow(0 2px 8px rgba(255, 255, 255, 0.2));
   transition: transform 0.3s ease;
 }
 
-.navbar-logo-mana:hover {
+.navbar-logo-img:hover {
   transform: scale(1.05);
-}
-
-/* Cuando agregues tu logo real */
-.logo-img {
-  height: 60px;
-  width: auto;
-}
-
-/* Placeholder temporal del logo */
-.logo-placeholder {
-  font-size: 40px;
-  width: 60px;
-  height: 60px;
-  background: rgba(238, 226, 221, 0.1);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.3));
 }
 
 /* ============================================
    MENÚ DE NAVEGACIÓN
    ============================================ */
-.navbar-menu-mana {
+.navbar-menu {
   display: flex;
+  gap: 50px;
   align-items: center;
-  gap: 45px;
 }
 
-.navbar-link-mana {
-  color: #EEE2DD; /* ✅ Texto beige claro normal */
-  background-color: transparent;
+.navbar-link {
+  color: #EEE2DD;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
-  letter-spacing: 0.5px;
-  padding: 10px 20px;
-  border-radius: 8px;
-  position: relative;
+  letter-spacing: 1px;
+  padding: 10px 0;
   transition: all 0.3s ease;
+  position: relative;
   text-transform: uppercase;
 }
 
-/* Efecto hover */
-.navbar-link-mana:hover {
+.navbar-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #FFDBCD;
+  transition: width 0.3s ease;
+}
+
+.navbar-link:hover {
+  color: #FFDBCD;
+}
+
+.navbar-link:hover::after {
+  width: 100%;
+}
+
+/* Link activo (cuando estás en esa página) */
+.navbar-link.active {
+  color: #FFDBCD;
+}
+
+.navbar-link.active::after {
+  width: 100%;
+}
+
+.navbar-link-registro {
   background-color: rgba(238, 226, 221, 0.1);
-  color: #FFDBCD; /* ✅ Cambia a durazno al pasar el mouse */
+  padding: 10px 25px;
+  border-radius: 8px;
+  border: 1px solid rgba(238, 226, 221, 0.3);
+  transition: all 0.3s ease;
 }
 
-/* ============================================
-   ANIMACIÓN CUANDO ESTÁ ACTIVO
-   Brillo sutil y cambio de color
-   ============================================ */
-.navbar-link-mana.active {
-  background-color: rgba(255, 219, 205, 0.15);
-  color: #FFDBCD; /* ✅ Texto durazno cuando está activo */
-  box-shadow: 
-    0 0 15px rgba(255, 219, 205, 0.4),
-    0 0 25px rgba(255, 219, 205, 0.2),
-    inset 0 0 10px rgba(255, 219, 205, 0.1);
-  animation: glow-pulse 2s ease-in-out infinite;
-}
-
-@keyframes glow-pulse {
-  0%, 100% {
-    box-shadow: 
-      0 0 15px rgba(255, 219, 205, 0.4),
-      0 0 25px rgba(255, 219, 205, 0.2),
-      inset 0 0 10px rgba(255, 219, 205, 0.1);
-  }
-  50% {
-    box-shadow: 
-      0 0 20px rgba(255, 219, 205, 0.6),
-      0 0 35px rgba(255, 219, 205, 0.3),
-      inset 0 0 15px rgba(255, 219, 205, 0.2);
-  }
-}
-
-/* ============================================
-   BOTÓN REGISTRARSE
-   ============================================ */
-.registrarse-btn {
-  background-color: rgba(255, 219, 205, 0.1);
-  border: 2px solid rgba(255, 219, 205, 0.3);
-}
-
-.registrarse-btn:hover {
+.navbar-link-registro:hover {
   background-color: rgba(255, 219, 205, 0.2);
   border-color: #FFDBCD;
   color: #FFDBCD;
 }
 
-.registrarse-btn.active {
-  background-color: rgba(255, 219, 205, 0.2);
-  border-color: #FFDBCD;
-  color: #FFDBCD;
+.navbar-link-registro::after {
+  display: none;
 }
 
 /* ============================================
-   MENÚ DESPLEGABLE DE USUARIO
+   MENÚ DE USUARIO DESPLEGABLE
    ============================================ */
-.navbar-usuario-mana {
+.navbar-usuario {
   position: relative;
 }
 
-.navbar-usuario-btn-mana {
+.navbar-usuario-btn {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   background-color: rgba(238, 226, 221, 0.1);
-  border: 2px solid rgba(238, 226, 221, 0.3);
-  color: #EEE2DD; /* ✅ Texto beige claro */
+  border: 1px solid rgba(238, 226, 221, 0.2);
+  color: #EEE2DD;
   padding: 10px 20px;
   border-radius: 25px;
   cursor: pointer;
+  transition: all 0.3s;
   font-size: 15px;
   font-weight: 600;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
 }
 
-.navbar-usuario-btn-mana:hover {
-  background-color: rgba(255, 219, 205, 0.2);
+.navbar-usuario-btn:hover {
+  background-color: rgba(255, 219, 205, 0.15);
   border-color: #FFDBCD;
-  color: #FFDBCD; /* ✅ Cambia a durazno al hover */
+  color: #FFDBCD;
 }
 
-.usuario-icono {
-  font-size: 18px;
+.navbar-usuario-icono {
+  font-size: 20px;
 }
 
-.usuario-nombre {
+.navbar-usuario-nombre {
   max-width: 120px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.usuario-flecha {
+.navbar-usuario-flecha {
   font-size: 10px;
-  margin-left: 5px;
 }
 
-/* Menú desplegable */
-.navbar-usuario-menu-mana {
+.navbar-usuario-menu {
   position: absolute;
   top: calc(100% + 10px);
   right: 0;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
   min-width: 220px;
   overflow: hidden;
   animation: slideDown 0.3s ease;
-  border: 2px solid #FFDBCD;
 }
 
 @keyframes slideDown {
   from {
     opacity: 0;
-    transform: translateY(-15px);
+    transform: translateY(-10px);
   }
   to {
     opacity: 1;
@@ -201,12 +174,12 @@
   }
 }
 
-.menu-item {
+.navbar-usuario-menu-item {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   padding: 14px 20px;
-  color: #1E0D00; /* Texto café oscuro en el menú desplegable */
+  color: #333;
   text-decoration: none;
   font-size: 15px;
   font-weight: 500;
@@ -215,30 +188,30 @@
   width: 100%;
   text-align: left;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background 0.2s;
 }
 
-.menu-item:hover {
-  background-color: rgba(255, 219, 205, 0.3);
+.navbar-usuario-menu-item:hover {
+  background-color: #f5f5f5;
 }
 
-.admin-link {
+.navbar-admin-link {
   background: linear-gradient(135deg, #ffd700, #ffed4e);
-  color: #1E0D00;
-  font-weight: 700;
-  border-top: 2px solid #ffa500;
+  color: #333 !important;
+  font-weight: bold;
+  border-left: 4px solid #ffa500;
 }
 
-.admin-link:hover {
+.navbar-admin-link:hover {
   background: linear-gradient(135deg, #ffed4e, #ffd700);
 }
 
-.cerrar-sesion {
-  color: #c54a3a;
+.navbar-cerrar-sesion {
+  color: #e74c3c;
   border-top: 1px solid #eee;
 }
 
-.cerrar-sesion:hover {
+.navbar-cerrar-sesion:hover {
   background-color: #fee;
 }
 
@@ -246,17 +219,16 @@
    RESPONSIVE - TABLETS
    ============================================ */
 @media (max-width: 1024px) {
-  .navbar-mana {
-    padding: 15px 30px;
+  .navbar {
+    padding: 18px 40px;
   }
 
-  .navbar-menu-mana {
-    gap: 25px;
+  .navbar-menu {
+    gap: 30px;
   }
 
-  .navbar-link-mana {
+  .navbar-link {
     font-size: 14px;
-    padding: 8px 15px;
   }
 }
 
@@ -264,45 +236,23 @@
    RESPONSIVE - MÓVILES
    ============================================ */
 @media (max-width: 768px) {
-  .navbar-mana {
-    padding: 12px 20px;
+  .navbar {
+    padding: 15px 20px;
   }
 
-  .navbar-container-mana {
-    flex-wrap: wrap;
+  .navbar-logo-img {
+    height: 55px;
+  }
+
+  .navbar-menu {
     gap: 15px;
   }
 
-  .navbar-menu-mana {
-    flex-wrap: wrap;
-    gap: 10px;
-    width: 100%;
-    justify-content: center;
-  }
-
-  .navbar-link-mana {
+  .navbar-link {
     font-size: 12px;
-    padding: 8px 12px;
   }
 
-  .logo-placeholder {
-    font-size: 30px;
-    width: 45px;
-    height: 45px;
-  }
-
-  .usuario-nombre {
+  .navbar-usuario-nombre {
     display: none;
-  }
-}
-
-@media (max-width: 480px) {
-  .navbar-link-mana {
-    font-size: 11px;
-    padding: 6px 10px;
-  }
-
-  .navbar-menu-mana {
-    gap: 5px;
   }
 }

@@ -1,82 +1,237 @@
-.carousel {
-  background: linear-gradient(to bottom, #f5a3d0, #e879b9);
-  padding: 100px 20px;
+/* ============================================
+   HERO SECTION - DISEÑO DE 2 COLUMNAS
+   ============================================ */
+
+.hero-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* ============================================
+   LADO IZQUIERDO - IMAGEN
+   ============================================ */
+.hero-left {
+  position: relative;
+  overflow: hidden;
+  background: #1a1a1a;
+}
+
+.hero-imagen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* ============================================
+   LADO DERECHO - CONTENIDO CON DIFUMINADO
+   ============================================ */
+.hero-right {
+  background: #f5f1e8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Difuminado rojo sutil en diagonal */
+.hero-right::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 100, 100, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-right::after {
+  content: '';
+  position: absolute;
+  bottom: -15%;
+  left: -5%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 150, 120, 0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-content {
   text-align: center;
-  color: white;
+  max-width: 650px;
+  animation: fadeIn 1.2s ease-in;
+  position: relative;
+  z-index: 1;
 }
 
-.carousel-title {
-  font-size: 60px;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  animation: fadeInDown 1s ease-in;
+/* ============================================
+   TEXTOS Y LOGO
+   ============================================ */
+.hero-bienvenido {
+  font-size: 36px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  color: #000000;
+  margin-bottom: 30px;
+  text-transform: uppercase;
 }
 
-.carousel-subtitle {
-  font-size: 28px;
+.hero-logo-grande {
+  width: 100%;
+  max-width: 550px;
+  height: auto;
+  margin: 30px 0;
+  animation: logoAppear 1.4s ease-in-out;
+}
+
+.hero-restobar {
+  font-size: 32px;
   font-weight: 300;
-  margin-bottom: 40px;
-  animation: fadeInUp 1s ease-in;
+  letter-spacing: 10px;
+  color: #000000;
+  margin: 15px 0 40px 0;
+  text-transform: uppercase;
 }
 
-.carousel-button {
-  margin-top: 30px;
-  padding: 15px 40px;
-  font-size: 20px;
-  background: white;
-  color: #764ba2;
+.hero-subtitle {
+  font-size: 24px;
+  font-weight: 300;
+  color: #333333;
+  margin: 40px 0 60px 0;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* ============================================
+   BOTÓN
+   ============================================ */
+.hero-button {
+  padding: 20px 70px;
+  font-size: 19px;
+  background: #2d2d2d;
+  color: #ffffff;
   border: none;
-  border-radius: 30px;
+  border-radius: 50px;
   cursor: pointer;
-  font-weight: bold;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s, box-shadow 0.3s;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
 }
 
-.carousel-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+.hero-button:hover {
+  background: #3d3d3d;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
-/* Animaciones */
-@keyframes fadeInDown {
+.hero-button:active {
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   ANIMACIONES
+   ============================================ */
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(-30px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
-@keyframes fadeInUp {
+@keyframes logoAppear {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: scale(0.85);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: scale(1);
   }
 }
 
-/* Responsive */
+/* ============================================
+   RESPONSIVE - TABLETS
+   ============================================ */
+@media (max-width: 1024px) {
+  .hero-section {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .hero-left {
+    height: 50vh;
+    order: 1;
+  }
+
+  .hero-right {
+    order: 2;
+    padding: 70px 40px;
+  }
+
+  .hero-bienvenido {
+    font-size: 30px;
+  }
+
+  .hero-logo-grande {
+    max-width: 450px;
+  }
+
+  .hero-restobar {
+    font-size: 26px;
+    letter-spacing: 8px;
+  }
+
+  .hero-subtitle {
+    font-size: 21px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE - MÓVILES
+   ============================================ */
 @media (max-width: 768px) {
-  .carousel {
-    padding: 60px 20px;
+  .hero-left {
+    height: 45vh;
   }
 
-  .carousel-title {
-    font-size: 36px;
+  .hero-right {
+    padding: 50px 25px;
   }
 
-  .carousel-subtitle {
-    font-size: 20px;
+  .hero-bienvenido {
+    font-size: 26px;
+    letter-spacing: 2px;
   }
 
-  .carousel-button {
-    font-size: 18px;
-    padding: 12px 30px;
+  .hero-logo-grande {
+    max-width: 320px;
+  }
+
+  .hero-restobar {
+    font-size: 22px;
+    letter-spacing: 5px;
+  }
+
+  .hero-subtitle {
+    font-size: 19px;
+    margin: 30px 0 45px 0;
+  }
+
+  .hero-button {
+    padding: 16px 45px;
+    font-size: 17px;
   }
 }

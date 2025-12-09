@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
-import logoMana from '../assets/logo-mana.png';
+import logoBlanco from '../assets/images/logo-blanco.png';
 
 function Navbar() {
   const [usuario, setUsuario] = useState(null);
   const [menuAbierto, setMenuAbierto] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation(); // Para saber en qué ruta estamos
 
   useEffect(() => {
     const usuarioGuardado = localStorage.getItem('usuario');
@@ -24,108 +23,72 @@ function Navbar() {
     navigate('/');
   };
 
-  // Función para verificar si la ruta está activa
-  const isActive = (path) => {
-    return location.pathname === path;
-  };
-
   return (
-    <nav className="navbar-mana">
-      <div className="navbar-container-mana">
-        
+    <nav className="navbar">
+      <div className="navbar-container">
         {/* LOGO */}
-        <Link to="/" className="navbar-logo-mana">
-          <img src={logoMana} alt="Mana Coffee Logo" className="logo-image-mana" />
+        <Link to="/" className="navbar-logo">
+          <img src={logoBlanco} alt="Mana Coffee" className="navbar-logo-img" />
         </Link>
         
         {/* MENÚ DE NAVEGACIÓN */}
-        <div className="navbar-menu-mana">
-          
-          {/* ¿QUIENES SOMOS? */}
-          <Link 
-            to="/contactanos" 
-            className={`navbar-link-mana ${isActive('/contactanos') ? 'active' : ''}`}
-          >
-            ¿QUIENES SOMOS?
-          </Link>
-
-          {/* MENÚ */}
-          <Link 
-            to="/menu" 
-            className={`navbar-link-mana ${isActive('/menu') ? 'active' : ''}`}
-          >
-            MENÚ
-          </Link>
-
-          {/* ARMA TU ALMUERZO */}
-          <Link 
-            to="/arma-tu-almuerzo" 
-            className={`navbar-link-mana ${isActive('/arma-tu-almuerzo') ? 'active' : ''}`}
-          >
-            ARMA TU ALMUERZO
-          </Link>
-
-          {/* INICIAR SESIÓN / USUARIO */}
+        <div className="navbar-menu">
           {!usuario ? (
-            <Link 
-              to="/iniciar-sesion" 
-              className={`navbar-link-mana ${isActive('/iniciar-sesion') ? 'active' : ''}`}
-            >
-              INICIAR SESIÓN
-            </Link>
+            <>
+              <Link to="/" className="navbar-link">¿QUIÉNES SOMOS?</Link>
+              <Link to="/menu" className="navbar-link">MENÚ</Link>
+              <Link to="/arma-tu-almuerzo" className="navbar-link">ARMA TU ALMUERZO</Link>
+              <Link to="/iniciar-sesion" className="navbar-link">INICIAR SESIÓN</Link>
+              <Link to="/registro" className="navbar-link navbar-link-registro">REGISTRARSE</Link>
+            </>
           ) : (
-            /* Menú desplegable del usuario */
-            <div className="navbar-usuario-mana">
-              <button 
-                className="navbar-usuario-btn-mana"
-                onClick={() => setMenuAbierto(!menuAbierto)}
-              >
-                <span className="usuario-icono">👤</span>
-                <span className="usuario-nombre">{usuario.nombre}</span>
-                <span className="usuario-flecha">{menuAbierto ? '▲' : '▼'}</span>
-              </button>
+            <>
+              <Link to="/" className="navbar-link">¿QUIÉNES SOMOS?</Link>
+              <Link to="/menu" className="navbar-link">MENÚ</Link>
+              <Link to="/arma-tu-almuerzo" className="navbar-link">ARMA TU ALMUERZO</Link>
+              <Link to="/reservar" className="navbar-link">RESERVAR</Link>
               
-              {menuAbierto && (
-                <div className="navbar-usuario-menu-mana">
-                  <Link 
-                    to="/mi-cuenta" 
-                    className="menu-item"
-                    onClick={() => setMenuAbierto(false)}
-                  >
-                    <span>📋</span> Mis Reservas
-                  </Link>
-                  
-                  {usuario.rol === 'admin' && (
+              <div className="navbar-usuario">
+                <button 
+                  className="navbar-usuario-btn"
+                  onClick={() => setMenuAbierto(!menuAbierto)}
+                >
+                  <span className="navbar-usuario-icono">👤</span>
+                  <span className="navbar-usuario-nombre">{usuario.nombre}</span>
+                  <span className="navbar-usuario-flecha">{menuAbierto ? '▲' : '▼'}</span>
+                </button>
+                
+                {menuAbierto && (
+                  <div className="navbar-usuario-menu">
                     <Link 
-                      to="/admin" 
-                      className="menu-item admin-link"
+                      to="/mi-cuenta" 
+                      className="navbar-usuario-menu-item"
                       onClick={() => setMenuAbierto(false)}
                     >
-                      <span>👑</span> Panel Admin
+                      📋 Mis Reservas
                     </Link>
-                  )}
-                  
-                  <button 
-                    className="menu-item cerrar-sesion"
-                    onClick={cerrarSesion}
-                  >
-                    <span>🚪</span> Cerrar Sesión
-                  </button>
-                </div>
-              )}
-            </div>
+                    
+                    {usuario.rol === 'admin' && (
+                      <Link 
+                        to="/admin" 
+                        className="navbar-usuario-menu-item navbar-admin-link"
+                        onClick={() => setMenuAbierto(false)}
+                      >
+                        👑 Panel Admin
+                      </Link>
+                    )}
+                    
+                    <button 
+                      className="navbar-usuario-menu-item navbar-cerrar-sesion"
+                      onClick={cerrarSesion}
+                    >
+                      🚪 Cerrar Sesión
+                    </button>
+                  </div>
+                )}
+              </div>
+            </>
           )}
-
-          {/* REGISTRARSE */}
-          {!usuario && (
-            <Link 
-              to="/registro" 
-              className={`navbar-link-mana registrarse-btn ${isActive('/registro') ? 'active' : ''}`}
-            >
-              REGISTRARSE
-            </Link>
-          )}
-
         </div>
       </div>
     </nav>
