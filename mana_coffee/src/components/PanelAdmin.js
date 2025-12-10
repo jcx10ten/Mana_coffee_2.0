@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './PanelAdmin.css';
 
-// ✅ Definir API_URL al inicio
+// Definir API_URL al inicio
 const API_URL = process.env.REACT_APP_API_URL || '';
 
 function PanelAdmin() {

@@ -15,10 +15,10 @@ function Reserva() {
 
   return (
     <>
-      {/* 👇 CONTENIDO DE LA PÁGINA */}
+      {/* CONTENIDO DE LA PÁGINA */}
       <div className="reserva-container">
         
-        {/* ✅ BRILLITOS DE FONDO (igual que Contactenos) */}
+        {/* BRILLITOS DE FONDO (igual que Contactenos) */}
         <div className="reserva-brillos">
           <div className="reserva-brillo brillo-amarillo brillo-top-right"></div>
           <div className="reserva-brillo brillo-dorado brillo-mid-left"></div>
@@ -161,7 +161,7 @@ function Reserva() {
 
       </div>
       
-      {/* 👇 MODAL FUERA DEL CONTAINER - ESTO ES LA CLAVE */}
+      {/* MODAL FUERA DEL CONTAINER - ESTO ES LA CLAVE */}
       {mostrarFormulario && (
         <FormularioReserva cerrarFormulario={cerrarFormulario} />
       )}

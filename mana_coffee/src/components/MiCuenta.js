@@ -135,7 +135,7 @@ function MiCuenta() {
   if (cargando) {
     return (
       <div className="mi-cuenta-container">
-        {/* ✨ BRILLITOS DE FONDO */}
+        {/* BRILLITOS DE FONDO */}
         <div className="mi-cuenta-brillos">
           <div className="mi-cuenta-brillo brillo-amarillo brillo-top-right"></div>
           <div className="mi-cuenta-brillo brillo-dorado brillo-mid-left"></div>
@@ -151,7 +151,7 @@ function MiCuenta() {
   return (
     <div className="mi-cuenta-container">
       
-      {/* ✨ BRILLITOS DE FONDO */}
+      {/* BRILLITOS DE FONDO */}
       <div className="mi-cuenta-brillos">
         <div className="mi-cuenta-brillo brillo-amarillo brillo-top-right"></div>
         <div className="mi-cuenta-brillo brillo-dorado brillo-mid-left"></div>

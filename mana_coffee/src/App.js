@@ -32,7 +32,7 @@ function App() {
         <main className="main-content">
           <Routes>
             
-            {/* ✅ PÁGINA PRINCIPAL (Inicio) */}
+            {/* PÁGINA PRINCIPAL (Inicio) */}
             <Route path="/" element={
               <>
                 {/* 1. HERO/CARRUSEL */}
@@ -107,19 +107,19 @@ function App() {
               </>
             } />
             
-            {/* ✅ PÁGINA DE REGISTRO */}
+            {/* PÁGINA DE REGISTRO */}
             <Route path="/registro" element={<Registro />} />
             
-            {/* ✅ PÁGINA DE MENÚ COMPLETO */}
+            {/* PÁGINA DE MENÚ COMPLETO */}
             <Route path="/menu" element={<Menu />} />
             
-            {/* ✅ CONSTRUYE TU ALMUERZO */}
+            {/* CONSTRUYE TU ALMUERZO */}
             <Route path="/arma-tu-almuerzo" element={<ArmaTuAlmuerzo />} />
             
-            {/* ✅ CONTACTO Y UBICACIÓN */}
+            {/* CONTACTO Y UBICACIÓN */}
             <Route path="/contactanos" element={<Contactenos />} />
             
-            {/* ✅ INICIAR SESIÓN */}
+            {/* INICIAR SESIÓN */}
             <Route path="/iniciar-sesion" element={<IniciarSesion />} />
             
             {/* ===========================================

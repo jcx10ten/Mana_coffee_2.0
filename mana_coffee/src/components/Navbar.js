@@ -18,7 +18,7 @@ function Navbar() {
     }
   }, []);
 
-  // ✅ EFECTO PARA MOVER EL BRILLO AL LINK ACTIVO
+  // EFECTO PARA MOVER EL BRILLO AL LINK ACTIVO
   useEffect(() => {
     const updateBrilloPosition = () => {
       if (!navRef.current) return;
@@ -80,7 +80,7 @@ function Navbar() {
         
         {/* MENÚ DE NAVEGACIÓN */}
         <div className="navbar-menu" ref={navRef}>
-          {/* ✅ BRILLO ANIMADO */}
+          {/* BRILLO ANIMADO */}
           <div className="navbar-brillo" style={brilloStyle}></div>
           
           {!usuario ? (

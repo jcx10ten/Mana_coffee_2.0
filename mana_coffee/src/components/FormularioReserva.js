@@ -179,7 +179,7 @@ function FormularioReserva({ cerrarFormulario }) {
       console.log('Reserva creada:', data);
       setSubmitSuccess(true);
 
-      // ✅ ENVIAR CONFIRMACIÓN POR WHATSAPP
+      // ENVIAR CONFIRMACIÓN POR WHATSAPP
       enviarConfirmacionWhatsApp(data.reserva);
 
       // Cerrar el modal después de 3 segundos

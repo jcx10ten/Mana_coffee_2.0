@@ -50,11 +50,11 @@
   display: flex;
   gap: 50px;
   align-items: center;
-  position: relative; /* ✅ Para posicionar el brillo */
+  position: relative; /* Para posicionar el brillo */
 }
 
 /* ============================================
-   ✨ BRILLO ANIMADO BAJO EL LINK ACTIVO
+   BRILLO ANIMADO BAJO EL LINK ACTIVO
    ============================================ */
 .navbar-brillo {
   position: absolute;
@@ -75,7 +75,7 @@
   pointer-events: none;
   z-index: 0;
   animation: brilloPulse 3s ease-in-out infinite;
-  transform: scaleX(1.8); /* ✅ Hace el brillo más ancho horizontalmente */
+  transform: scaleX(1.8); /* Hace el brillo más ancho horizontalmente */
 }
 
 /* Animación de pulso sutil del brillo */
@@ -100,7 +100,7 @@
   transition: all 0.3s ease;
   position: relative;
   text-transform: uppercase;
-  z-index: 1; /* ✅ Por encima del brillo */
+  z-index: 1; /* Por encima del brillo */
 }
 
 /* Línea inferior en hover */

@@ -20,20 +20,20 @@
   align-items: center;
   justify-content: flex-start;
   padding: 0;
-  background: #f5f1e8; /* ✅ Fondo crema uniforme */
+  background: #f5f1e8; /* Fondo crema uniforme */
 }
 
 .hero-imagen {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: left center; /* ✅ Alineado a la izquierda */
+  object-position: left center; /* Alineado a la izquierda */
   display: block;
   position: relative;
   z-index: 1;
 }
 
-/* ✅ QUITADO: Ya no hay degradado sobre la imagen */
+/* QUITADO: Ya no hay degradado sobre la imagen */
 
 /* ============================================
    LADO DERECHO - CONTENIDO
@@ -45,7 +45,7 @@
   align-items: center;
   padding: 80px 60px;
   position: relative;
-  overflow: visible; /* ✅ Permite que los brillitos se salgan */
+  overflow: visible; /* Permite que los brillitos se salgan */
 }
 
 /* Fondos difuminados sutiles */
@@ -118,7 +118,7 @@
   position: relative;
   max-width: 400px;
   margin: 30px auto;
-  z-index: 5; /* ✅ Asegurar que esté encima de los brillitos */
+  z-index: 5; /* Asegurar que esté encima de los brillitos */
 }
 
 .hero-logo-grande {
@@ -129,7 +129,7 @@
 }
 
 /* ============================================
-   ✨ BRILLITOS EN LA INTERSECCIÓN
+   BRILLITOS EN LA INTERSECCIÓN
 ============================================ */
 .brillito {
   position: absolute;
@@ -138,16 +138,16 @@
   opacity: 0;
   border-radius: 50%;
   pointer-events: none;
-  z-index: 1; /* ✅ Detrás del logo pero visible */
+  z-index: 1; /* Detrás del logo pero visible */
   animation: sparkle 4s ease-in-out infinite;
   filter: blur(100px);
 }
 
-/* ✅ Posicionados en la INTERSECCIÓN de las dos columnas */
+/* Posicionados en la INTERSECCIÓN de las dos columnas */
 /* Brillito 1 - Superior Izquierdo (en la intersección) */
 .brillito-1 { 
   top: -250px; 
-  left: -550px; /* ✅ Más a la izquierda para que cruce la división */
+  left: -550px; /* Más a la izquierda para que cruce la división */
   background: radial-gradient(
     circle, 
     rgba(255, 200, 100, 0.5) 0%, 
@@ -161,7 +161,7 @@
 /* Brillito 2 - Superior Derecho (más cerca de la intersección) */
 .brillito-2 { 
   top: -200px; 
-  left: -350px; /* ✅ Centrado en la intersección */
+  left: -350px; /* Centrado en la intersección */
   width: 700px;
   height: 700px;
   background: radial-gradient(
@@ -177,7 +177,7 @@
 /* Brillito 3 - Inferior Izquierdo (en la intersección) */
 .brillito-3 { 
   bottom: -250px; 
-  left: -550px; /* ✅ Más a la izquierda */
+  left: -550px; /* Más a la izquierda */
   background: radial-gradient(
     circle, 
     rgba(255, 160, 130, 0.45) 0%, 
@@ -191,7 +191,7 @@
 /* Brillito 4 - Inferior Derecho (cerca de la intersección) */
 .brillito-4 { 
   bottom: -200px; 
-  left: -350px; /* ✅ Centrado en la intersección */
+  left: -350px; /* Centrado en la intersección */
   width: 700px;
   height: 700px;
   background: radial-gradient(

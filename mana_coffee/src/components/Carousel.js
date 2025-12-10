@@ -23,7 +23,7 @@ function Carousel() {
         <div className="hero-content">
           <h2 className="hero-bienvenido">BIENVENIDO A</h2>
           
-          {/* ✅ CONTENEDOR DEL LOGO CON BRILLITOS CSS */}
+          {/* CONTENEDOR DEL LOGO CON BRILLITOS CSS */}
           <div className="hero-logo-container">
             {/* Brillitos creados con CSS - NO son imágenes */}
             <div className="brillito brillito-1"></div>

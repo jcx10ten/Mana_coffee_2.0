@@ -30,7 +30,7 @@ if (JWT_SECRET === 'mi_clave_super_secreta' || JWT_SECRET.length < 10) {
 app.use(cors());
 app.use(express.json());
 
-// ✅ NUEVO: Servir archivos estáticos de la carpeta uploads
+// NUEVO: Servir archivos estáticos de la carpeta uploads
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // ==================== CONFIGURACIÓN DE BASE DE DATOS ====================
@@ -113,7 +113,7 @@ app.use('/api/reservas', reservasRoutes);
 const adminRoutes = require('./routes/adminRoutes')(db);
 app.use('/api/admin', adminRoutes);
 
-// ✅ NUEVO: Importar y configurar rutas de menú
+// NUEVO: Importar y configurar rutas de menú
 const menuRoutes = require('./routes/menuRoutes')(db);
 app.use('/api/menu', menuRoutes);
 

@@ -111,7 +111,7 @@ router.post('/login', (req, res) => {
         });
       }
 
-      // Crear token JWT (✅ CON ROL INCLUIDO)
+      // Crear token JWT (CON ROL INCLUIDO)
       const token = jwt.sign(
   { 
     id: usuario.id, 
@@ -123,7 +123,7 @@ router.post('/login', (req, res) => {
   { expiresIn: '24h' }
 );
 
-      // Responder con token y datos del usuario (✅ CON ROL INCLUIDO)
+      // Responder con token y datos del usuario (CON ROL INCLUIDO)
       res.json({
   mensaje: 'Login exitoso',
   token: token,
@@ -131,7 +131,7 @@ router.post('/login', (req, res) => {
     id: usuario.id,
     nombre: usuario.nombre,
     email: usuario.email,
-    rol: usuario.rol || 'cliente'  // ✅ AGREGAR ESTA LÍNEA
+    rol: usuario.rol || 'cliente'  // AGREGAR ESTA LÍNEA
   }
 });
     } catch (error) {

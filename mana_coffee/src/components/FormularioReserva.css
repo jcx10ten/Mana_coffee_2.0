@@ -12,13 +12,13 @@
   justify-content: center;
   align-items: center;
   z-index: 9999 !important;
-  overflow-y: auto; /* 👈 Permite scroll si el modal es muy alto */
-  padding: 20px; /* 👈 Añadido para móviles */
+  overflow-y: auto; /* Permite scroll si el modal es muy alto */
+  padding: 20px; /* Añadido para móviles */
 }
 
 .modal-container {
-  background: #f5f1e8 !important; /* 🎨 FONDO RESERVAS */
-  padding: 0; /* 👈 Cambiado a 0 para que header y footer gestionen su padding */
+  background: #f5f1e8 !important; /* FONDO RESERVAS */
+  padding: 0; /* Cambiado a 0 para que header y footer gestionen su padding */
   border-radius: 18px;
   width: 95%;
   max-width: 550px;

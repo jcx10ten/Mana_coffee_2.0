@@ -67,7 +67,7 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* ✅ BOTÓN ESPECIAL PARA ACTUALIZAR MENÚ */
+/* BOTÓN ESPECIAL PARA ACTUALIZAR MENÚ */
 .admin-menu-btn {
   margin-top: 20px;
   padding-top: 20px !important;
@@ -109,7 +109,7 @@
   font-weight: 700;
 }
 
-/* ✅ INFO DEL MENÚ ACTUAL */
+/* INFO DEL MENÚ ACTUAL */
 .menu-actual-info {
   display: flex;
   align-items: center;

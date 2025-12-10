@@ -5,7 +5,7 @@
 .mi-cuenta-container {
   width: 100%;
   min-height: calc(100vh - 80px - 200px);
-  background: #f5f1e8; /* 👈 Mismo fondo que Reservas */
+  background: #f5f1e8; /* Mismo fondo que Reservas */
   padding: 100px 20px 60px 20px;
   position: relative;
   overflow: hidden;
@@ -13,7 +13,7 @@
 }
 
 /* ============================================
-   ✨ BRILLITOS DE FONDO
+   BRILLITOS DE FONDO
    ============================================ */
 
 .mi-cuenta-brillos {
@@ -130,14 +130,14 @@
 
 .mi-cuenta-header h1 {
   font-size: 36px;
-  color: #1E0D00; /* 👈 Café oscuro */
+  color: #1E0D00; /* Café oscuro */
   font-weight: 700;
 }
 
 .btn-nueva-reserva {
   padding: 12px 30px;
-  background: #1E0D00; /* 👈 Café oscuro sólido */
-  color: #FFDBCD; /* 👈 Durazno pastel */
+  background: #1E0D00; /* Café oscuro sólido */
+  color: #FFDBCD; /* Durazno pastel */
   border: none;
   border-radius: 8px;
   font-size: 16px;
@@ -183,8 +183,8 @@
 
 .btn-reservar-ahora {
   padding: 15px 40px;
-  background: #1E0D00; /* 👈 Café oscuro sólido */
-  color: #FFDBCD; /* 👈 Durazno pastel */
+  background: #1E0D00; /* Café oscuro sólido */
+  color: #FFDBCD; /* Durazno pastel */
   border: none;
   border-radius: 30px;
   font-size: 18px;
@@ -225,8 +225,8 @@
 }
 
 .reserva-card-header {
-  background: #1E0D00; /* 👈 Café oscuro sólido */
-  color: #FFDBCD; /* 👈 Durazno pastel */
+  background: #1E0D00; /* Café oscuro sólido */
+  color: #FFDBCD; /* Durazno pastel */
   padding: 15px 20px;
   display: flex;
   justify-content: space-between;
@@ -243,7 +243,7 @@
   border-radius: 20px;
   font-size: 13px;
   font-weight: 600;
-  background: rgba(255, 219, 205, 0.3); /* 👈 Durazno semi-transparente */
+  background: rgba(255, 219, 205, 0.3); /* Durazno semi-transparente */
   text-transform: capitalize;
 }
 
@@ -355,7 +355,7 @@
 
 .modal-editar h2 {
   margin-bottom: 25px;
-  color: #1E0D00; /* 👈 Café oscuro */
+  color: #1E0D00; /* Café oscuro */
   font-weight: 700;
 }
 
@@ -367,7 +367,7 @@
   display: block;
   margin-bottom: 8px;
   font-weight: 600;
-  color: #1E0D00; /* 👈 Café oscuro */
+  color: #1E0D00; /* Café oscuro */
 }
 
 .form-group input,
@@ -385,7 +385,7 @@
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #1E0D00; /* 👈 Café oscuro */
+  border-color: #1E0D00; /* Café oscuro */
 }
 
 .form-row {
@@ -422,8 +422,8 @@
 }
 
 .btn-guardar {
-  background: #1E0D00; /* 👈 Café oscuro sólido */
-  color: #FFDBCD; /* 👈 Durazno pastel */
+  background: #1E0D00; /* Café oscuro sólido */
+  color: #FFDBCD; /* Durazno pastel */
 }
 
 .btn-guardar:hover {

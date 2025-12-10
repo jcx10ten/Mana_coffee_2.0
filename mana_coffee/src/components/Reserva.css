@@ -13,7 +13,7 @@
 }
 
 /* ============================================
-   ✨ BRILLITOS DE FONDO (igual que Contactenos)
+   BRILLITOS DE FONDO (igual que Contactenos)
    ============================================ */
 
 /* Contenedor de brillos */
@@ -128,14 +128,14 @@
 
 .reserva-header h1 {
   font-size: 48px;
-  color: #1E0D00; /* 👈 Café oscuro */
+  color: #1E0D00; /* Café oscuro */
   margin-bottom: 20px;
   font-weight: 700;
 }
 
 .reserva-header-subtitle {
   font-size: 20px;
-  color: #5a5a5a; /* 👈 Gris oscuro (legible) */
+  color: #5a5a5a; /* Gris oscuro (legible) */
   line-height: 1.6;
   max-width: 700px;
   margin: 0 auto;
@@ -178,13 +178,13 @@
 .info-title {
   font-size: 18px;
   font-weight: 700;
-  color: #1E0D00; /* 👈 Café oscuro */
+  color: #1E0D00; /* Café oscuro */
   margin-bottom: 5px;
 }
 
 .info-description {
   font-size: 16px;
-  color: #5a5a5a; /* 👈 Gris oscuro (legible) */
+  color: #5a5a5a; /* Gris oscuro (legible) */
   line-height: 1.6;
 }
 
@@ -203,7 +203,7 @@
 
 .pasos-title {
   font-size: 32px;
-  color: #1E0D00; /* 👈 Café oscuro */
+  color: #1E0D00; /* Café oscuro */
   margin-bottom: 30px;
   text-align: center;
   font-weight: 700;
@@ -232,8 +232,8 @@
 .paso-numero {
   width: 35px;
   height: 35px;
-  background-color: #1E0D00; /* 👈 Café oscuro */
-  color: #FFDBCD; /* 👈 Durazno pastel */
+  background-color: #1E0D00; /* Café oscuro */
+  color: #FFDBCD; /* Durazno pastel */
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -248,7 +248,7 @@
 .paso-texto {
   flex: 1;
   font-size: 16px;
-  color: #5a5a5a; /* 👈 Gris oscuro (legible) */
+  color: #5a5a5a; /* Gris oscuro (legible) */
   line-height: 1.6;
 }
 
@@ -259,7 +259,7 @@
 .reserva-precios-section {
   max-width: 900px;
   margin: 0 auto 50px auto;
-  background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%); /* 👈 Gradiente café/naranja */
+  background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%); /* Gradiente café/naranja */
   border-radius: 15px;
   padding: 40px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
@@ -271,7 +271,7 @@
   margin-bottom: 20px;
   text-align: center;
   font-weight: 700;
-  color: #ffffff; /* 👈 Blanco (se ve bien en el gradiente morado) */
+  color: #ffffff; /* Blanco (se ve bien en el gradiente morado) */
 }
 
 .precios-descripcion {
@@ -279,7 +279,7 @@
   line-height: 1.8;
   text-align: center;
   margin-bottom: 20px;
-  color: #ffffff; /* 👈 Blanco (se ve bien en el gradiente morado) */
+  color: #ffffff; /* Blanco (se ve bien en el gradiente morado) */
 }
 
 .precios-nota {
@@ -288,7 +288,7 @@
   font-style: italic;
   opacity: 0.95;
   margin-top: 20px;
-  color: #ffffff; /* 👈 Blanco (se ve bien en el gradiente morado) */
+  color: #ffffff; /* Blanco (se ve bien en el gradiente morado) */
 }
 
 /* ============================================
@@ -306,20 +306,20 @@
 
 .aviso-title {
   font-size: 24px;
-  color: #1E0D00; /* 👈 Café oscuro */
+  color: #1E0D00; /* Café oscuro */
   margin-bottom: 15px;
   font-weight: 700;
 }
 
 .aviso-texto {
   font-size: 16px;
-  color: #5a5a5a; /* 👈 Gris oscuro (legible) */
+  color: #5a5a5a; /* Gris oscuro (legible) */
   line-height: 1.7;
 }
 
 .texto-destacado {
   font-weight: 700;
-  color: #1E0D00; /* 👈 Café oscuro */
+  color: #1E0D00; /* Café oscuro */
 }
 
 /* ============================================
@@ -334,22 +334,22 @@
 
 .reserva-btn-principal {
   padding: 20px 60px;
-  background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%); /* 👈 Gradiente café/naranja */
-  color: #ffffff; /* 👈 Blanco (legible en el gradiente) */
+  background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%); /* Gradiente café/naranja */
+  color: #ffffff; /* Blanco (legible en el gradiente) */
   border: none;
   border-radius: 50px;
   font-size: 20px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4); /* 👈 Sombra café */
+  box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4); /* Sombra café */
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .reserva-btn-principal:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(139, 69, 19, 0.6); /* 👈 Sombra café */
+  box-shadow: 0 8px 25px rgba(139, 69, 19, 0.6); /* Sombra café */
 }
 
 .reserva-btn-principal:active {
