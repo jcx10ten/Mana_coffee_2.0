@@ -103,6 +103,15 @@ function Menu() {
 
   return (
     <section className="menu-page">
+      {/* Brillitos de fondo */}
+      <div className="menu-brillos">
+        <div className="menu-brillo brillo-amarillo brillo-top-right"></div>
+        <div className="menu-brillo brillo-dorado brillo-mid-left"></div>
+        <div className="menu-brillo brillo-naranja brillo-bottom-left"></div>
+        <div className="menu-brillo brillo-rojo brillo-mid-right"></div>
+        <div className="menu-brillo brillo-rose brillo-bottom-center"></div>
+      </div>
+
       <div className="menu-main-container">
         {/* COLUMNA IZQUIERDA: DESPLEGABLES */}
         <div className="menu-left-section">

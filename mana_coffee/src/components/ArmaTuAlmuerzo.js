@@ -117,6 +117,15 @@ function ArmaTuAlmuerzo() {
 
   return (
     <section className="arma-tu-almuerzo">
+      {/* Brillitos de fondo */}
+      <div className="arma-brillos">
+        <div className="arma-brillo brillo-amarillo brillo-top-right"></div>
+        <div className="arma-brillo brillo-dorado brillo-mid-left"></div>
+        <div className="arma-brillo brillo-naranja brillo-bottom-left"></div>
+        <div className="arma-brillo brillo-rojo brillo-mid-right"></div>
+        <div className="arma-brillo brillo-rose brillo-bottom-center"></div>
+      </div>
+
       <div className="arma-header">
         <h2 className="arma-title">ARMA TU ALMUERZO</h2>
         <p className="arma-subtitle">Elige los ingredientes para crear tu almuerzo perfecto</p>

@@ -32,13 +32,21 @@ app.use(express.json());
 // ✅ NUEVO: Servir archivos estáticos de la carpeta uploads
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+// ==================== CONFIGURACIÓN DE BASE DE DATOS ====================
+// Detectar ruta según el entorno (producción o desarrollo)
+const DB_PATH = process.env.NODE_ENV === 'production' 
+  ? '/opt/render/project/src/server/database.db'
+  : process.env.DB_PATH || './database.db';
+
+console.log('📊 Usando base de datos en:', DB_PATH);
+
 // ==================== CONEXIÓN A BASE DE DATOS ====================
-const db = new sqlite3.Database(process.env.DB_PATH || './database.db', (err) => {
+const db = new sqlite3.Database(DB_PATH, (err) => {
   if (err) {
     console.error('❌ Error al conectar a la base de datos:', err);
     process.exit(1);
   } else {
-    console.log('✅ Conectado a SQLite');
+    console.log('✅ Conectado a SQLite en:', DB_PATH);
   }
 });
 
@@ -124,6 +132,15 @@ app.use((req, res) => {
     ruta_solicitada: req.url
   });
 });
+
+// ==================== SERVIR FRONTEND EN PRODUCCIÓN ====================
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../build')));
+  
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+  });
+}
 
 // ==================== INICIAR SERVIDOR ====================
 app.listen(PORT, () => {
