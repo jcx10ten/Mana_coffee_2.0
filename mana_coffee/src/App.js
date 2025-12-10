@@ -47,14 +47,23 @@ function App() {
                     
                     <div className="text-content">
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                        Mantente al tanto de todo lo que ocurre en Mana Restro Bar
                       </p>
                       
                       <p>
-                        Nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Disfruta de la mejor experiencia gastronómica y de coctelería en Pamplona, Norte de Santander. Descubre sabores únicos, bebidas artesanales y un ambiente pensado para compartir momentos inolvidables con amigos y familia.
+                      </p>
+                      
+                      <p>
+                        No te pierdas nuestras noches temáticas y eventos especiales.
+                      </p>
+                      
+                      <p>
+                        Sigue nuestras redes para conocer promociones exclusivas, recetas de nuestros cocteles más icónicos y la historia detrás de cada plato que servimos.
+                      </p>
+                      
+                      <p>
+                        Conecta con nuestra comunidad y sé parte de la experiencia Mana Restro Bar.
                       </p>
                       
                       <ul className="instagram-benefits">
