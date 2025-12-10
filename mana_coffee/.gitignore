@@ -3,3 +3,4 @@ node_modules/
 **/.cache/
 *.db
 mana_coffee/server/database.db
+server/node_modules/
