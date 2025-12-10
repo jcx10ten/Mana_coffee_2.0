@@ -1,141 +1,43 @@
-.pdf-header-info {
-  text-align: center;
-  padding-bottom: 20px;
-  border-bottom: 3px solid #f0f0f0;
-}
-
-.pdf-title {
-  font-size: 32px;
-  color: #2d3436;
-  margin-bottom: 10px;
-  font-weight: 700;
-}
-
-.pdf-date {
-  font-size: 16px;
-  color: #636e72;
-  font-style: italic;
-}
-
-.pdf-viewer-wrapper {
-  width: 100%;
-  height: 800px;
-  border-radius: 15px;
-  overflow: hidden;
-  border: 3px solid #e0e0e0;
-  background: #f8f9fa;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-}
-
-.pdf-viewer {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-.pdf-actions {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding-top: 20px;
-}
-
-.btn-ver-pdf,
-.btn-descargar-pdf {
-  padding: 15px 35px;
-  border-radius: 30px;
-  font-size: 16px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.btn-ver-pdf {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
-}
-
-.btn-ver-pdf:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
-}
-
-.btn-descargar-pdf {
-  background: white;
-  color: #667eea;
-  border: 2px solid #667eea;
-}
-
-.btn-descargar-pdf:hover {
-  background: #667eea;
-  color: white;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
-}
-
-.pdf-no-disponible {
-  text-align: center;
-  padding: 80px 40px;
-  background: #f8f9fa;
-  border-radius: 15px;
-  border: 2px dashed #ddd;
-}
-
-.pdf-no-disponible-icon {
-  font-size: 64px;
-  margin-bottom: 20px;
-  opacity: 0.5;
-}
-
-.pdf-no-disponible-text {
-  font-size: 24px;
-  color: #2d3436;
-  margin-bottom: 10px;
-  font-weight: 600;
-}
-
-.pdf-no-disponible-subtext {
-  font-size: 16px;
-  color: #636e72;
+.menu-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #d4af8a 0%, #b8956a 100%);
+  padding: 100px 20px 60px 20px;
 }
 
 /* ============================================
-   SEPARADOR VISUAL
+   CONTENEDOR PRINCIPAL - 2 COLUMNAS
    ============================================ */
-.menu-separator {
-  max-width: 1200px;
-  margin: 0 auto 50px auto;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.separator-line {
-  flex: 1;
-  height: 2px;
-  background: linear-gradient(to right, transparent, #ddd, transparent);
-}
-
-.separator-text {
-  font-size: 18px;
-  color: #636e72;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  padding: 0 20px;
-  white-space: nowrap;
+.menu-main-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 30px;
+  align-items: start;
 }
 
 /* ============================================
-   CONTENEDOR PRINCIPAL (Menú desplegable)
+   COLUMNA IZQUIERDA: DESPLEGABLES
+   ============================================ */
+.menu-left-section {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.menu-section-title {
+  font-size: 28px;
+  color: white;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* ============================================
+   CONTENEDOR DEL MENÚ
    ============================================ */
 .menu-container {
-  max-width: 1200px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -145,15 +47,15 @@
    CATEGORÍA (Acordeón)
    ============================================ */
 .menu-categoria {
-  background: white;
-  border-radius: 15px;
+  background: #5c4033;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
 }
 
 .menu-categoria:hover {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 /* ============================================
@@ -165,36 +67,33 @@
   align-items: center;
   justify-content: space-between;
   padding: 25px 30px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border: none;
+  background: #5c4033;
+  border: 2px solid rgba(212, 175, 138, 0.3);
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .menu-categoria-header:hover {
-  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  background: #6f4f3a;
+  border-color: #d4af8a;
 }
 
 .menu-categoria-header.activo {
-  background: linear-gradient(135deg, #5568d3 0%, #6a3e8f 100%);
-}
-
-.menu-categoria-icono {
-  font-size: 32px;
-  margin-right: 15px;
+  background: #8b6f47;
+  border-color: #d4af8a;
 }
 
 .menu-categoria-nombre {
   flex: 1;
   text-align: left;
-  font-size: 28px;
+  font-size: 20px;
   font-weight: 700;
   color: white;
 }
 
 .menu-categoria-flecha {
   font-size: 20px;
-  color: white;
+  color: #d4af8a;
   transition: transform 0.3s ease;
 }
 
@@ -203,10 +102,10 @@
    ============================================ */
 .menu-items-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
   padding: 30px;
-  background: #f8f9fa;
+  background: rgba(255, 255, 255, 0.05);
   animation: slideDown 0.3s ease;
 }
 
@@ -225,68 +124,224 @@
    CARD DE ITEM INDIVIDUAL
    ============================================ */
 .menu-item-card {
-  background: white;
+  background: rgba(255, 255, 255, 0.1);
   padding: 20px;
   border-radius: 12px;
-  border-left: 4px solid #667eea;
+  border-left: 4px solid #d4af8a;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(10px);
 }
 
 .menu-item-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-  border-left-color: #764ba2;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .menu-item-nombre {
-  font-size: 20px;
-  color: #2d3436;
+  font-size: 18px;
+  color: white;
   font-weight: 700;
   margin-bottom: 10px;
 }
 
 .menu-item-descripcion {
-  font-size: 15px;
-  color: #636e72;
+  font-size: 14px;
+  color: #d4af8a;
   line-height: 1.6;
   margin-bottom: 12px;
   min-height: 40px;
 }
 
 .menu-item-precio {
-  font-size: 22px;
-  color: #00b894;
+  font-size: 20px;
+  color: #d4af8a;
   font-weight: 700;
   margin: 0;
 }
 
 /* ============================================
+   COLUMNA DERECHA: PDF
+   ============================================ */
+.menu-right-section {
+  position: relative;
+}
+
+.pdf-container {
+  background: #5c4033;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(212, 175, 138, 0.3);
+  position: sticky;
+  top: 100px;
+}
+
+.pdf-loading {
+  text-align: center;
+  padding: 80px 40px;
+  background: #5c4033;
+  border-radius: 20px;
+  border: 2px solid rgba(212, 175, 138, 0.3);
+  color: #d4af8a;
+}
+
+.pdf-no-disponible {
+  text-align: center;
+  padding: 80px 40px;
+  background: #5c4033;
+  border-radius: 20px;
+  border: 2px dashed #d4af8a;
+  color: #d4af8a;
+}
+
+.pdf-no-disponible-text {
+  font-size: 18px;
+  color: #d4af8a;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.pdf-viewer-wrapper {
+  width: 100%;
+  height: 600px;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 2px solid rgba(212, 175, 138, 0.3);
+  background: #f8f9fa;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+}
+
+.pdf-viewer {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.pdf-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.btn-ver-pdf,
+.btn-descargar-pdf {
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  text-align: center;
+  justify-content: center;
+}
+
+.btn-ver-pdf {
+  background: linear-gradient(135deg, #8b6f47 0%, #a0826d 100%);
+  color: white;
+  border: 2px solid #d4af8a;
+}
+
+.btn-ver-pdf:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 138, 0.4);
+  background: linear-gradient(135deg, #a0826d 0%, #b8956a 100%);
+}
+
+.btn-descargar-pdf {
+  background: rgba(212, 175, 138, 0.2);
+  color: #d4af8a;
+  border: 2px solid #d4af8a;
+}
+
+.btn-descargar-pdf:hover {
+  background: #d4af8a;
+  color: #2d2d2d;
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   LOADING SPINNER
+   ============================================ */
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(212, 175, 138, 0.3);
+  border-top-color: #d4af8a;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================
    RESPONSIVE - TABLETS
+   ============================================ */
+@media (max-width: 1024px) {
+  .menu-main-container {
+    grid-template-columns: 1fr;
+  }
+
+  .pdf-container {
+    position: relative;
+    top: 0;
+  }
+
+  .menu-section-title {
+    font-size: 24px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE - MÓVILES
    ============================================ */
 @media (max-width: 768px) {
   .menu-page {
     padding: 90px 15px 40px 15px;
   }
 
-  .menu-title {
-    font-size: 36px;
+  .menu-section-title {
+    font-size: 20px;
   }
 
-  .menu-subtitle {
+  .menu-categoria-header {
+    padding: 15px 20px;
+  }
+
+  .menu-categoria-nombre {
+    font-size: 16px;
+  }
+
+
+
+  .menu-items-grid {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .menu-item-nombre {
+    font-size: 16px;
+  }
+
+  .menu-item-descripcion {
+    font-size: 13px;
+  }
+
+  .menu-item-precio {
     font-size: 18px;
   }
 
-  .menu-pdf-section {
-    padding: 25px;
-  }
-
-  .pdf-title {
-    font-size: 26px;
-  }
-
   .pdf-viewer-wrapper {
-    height: 600px;
+    height: 400px;
   }
 
   .pdf-actions {
@@ -296,92 +351,5 @@
   .btn-ver-pdf,
   .btn-descargar-pdf {
     width: 100%;
-    justify-content: center;
-  }
-
-  .menu-separator {
-    margin: 40px auto;
-  }
-
-  .separator-text {
-    font-size: 16px;
-  }
-
-  .menu-categoria-header {
-    padding: 20px;
-  }
-
-  .menu-categoria-nombre {
-    font-size: 22px;
-  }
-
-  .menu-categoria-icono {
-    font-size: 28px;
-  }
-
-  .menu-items-grid {
-    grid-template-columns: 1fr;
-    padding: 20px;
-  }
-}
-
-/* ============================================
-   RESPONSIVE - MÓVILES
-   ============================================ */
-@media (max-width: 480px) {
-  .menu-title {
-    font-size: 32px;
-  }
-
-  .menu-pdf-section {
-    padding: 20px;
-  }
-
-  .pdf-title {
-    font-size: 22px;
-  }
-
-  .pdf-date {
-    font-size: 14px;
-  }
-
-  .pdf-viewer-wrapper {
-    height: 500px;
-  }
-
-  .separator-text {
-    font-size: 14px;
-    padding: 0 10px;
-  }
-
-  .menu-categoria-header {
-    padding: 15px;
-  }
-
-  .menu-categoria-nombre {
-    font-size: 18px;
-  }
-
-  .menu-categoria-icono {
-    font-size: 24px;
-    margin-right: 10px;
-  }
-
-  .menu-item-nombre {
-    font-size: 18px;
-  }
-
-  .menu-item-descripcion {
-    font-size: 14px;
-  }
-
-  .menu-item-precio {
-    font-size: 20px;
-  }
-
-  .btn-ver-pdf,
-  .btn-descargar-pdf {
-    padding: 12px 25px;
-    font-size: 14px;
   }
 }

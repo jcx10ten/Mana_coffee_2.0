@@ -5,7 +5,7 @@
 
 .arma-tu-almuerzo {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: linear-gradient(135deg, #d4af8a 0%, #b8956a 100%);
   padding: 100px 20px 60px 20px;
 }
 
@@ -15,18 +15,29 @@
 .arma-header {
   text-align: center;
   margin-bottom: 50px;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../assets/images/arma-almuerzo-header.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+  padding: 80px 20px;
+  border-radius: 15px;
+  margin: 0 -20px 50px -20px;
+  padding-left: calc(20px);
+  padding-right: calc(20px);
 }
 
 .arma-title {
   font-size: 48px;
-  color: #2d3436;
+  color: white;
   margin-bottom: 15px;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .arma-subtitle {
   font-size: 20px;
-  color: #636e72;
+  color: #d4af8a;
   font-weight: 400;
 }
 
@@ -52,19 +63,21 @@
 }
 
 .categoria-card {
-  background: white;
-  border-radius: 15px;
-  padding: 25px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  background: #5c4033;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
 .categoria-title {
   font-size: 26px;
-  color: #667eea;
+  color: white;
   margin-bottom: 20px;
   font-weight: 700;
-  border-bottom: 3px solid #667eea;
+  border-bottom: 3px solid #d4af8a;
   padding-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .productos-grid {
@@ -80,15 +93,16 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px;
-  background: #f8f9fa;
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   transition: all 0.3s ease;
-  border: 2px solid transparent;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
 }
 
 .producto-item:hover {
-  background: #f1f3f5;
-  border-color: #667eea;
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #d4af8a;
   transform: translateX(5px);
 }
 
@@ -98,14 +112,14 @@
 
 .producto-nombre {
   font-size: 16px;
-  color: #2d3436;
+  color: white;
   font-weight: 600;
   margin-bottom: 5px;
 }
 
 .producto-precio {
   font-size: 18px;
-  color: #00b894;
+  color: #d4af8a;
   font-weight: 700;
   margin: 0;
 }
@@ -115,9 +129,9 @@
    ============================================ */
 .btn-agregar {
   padding: 10px 20px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
+  background: #2d2d2d;
+  color: #d4af8a;
+  border: 2px solid #d4af8a;
   border-radius: 8px;
   font-size: 14px;
   font-weight: 600;
@@ -127,24 +141,26 @@
 
 .btn-agregar:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 4px 12px rgba(212, 175, 138, 0.4);
+  background: #d4af8a;
+  color: #2d2d2d;
 }
 
 .cantidad-controls {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: white;
+  background: rgba(255, 255, 255, 0.1);
   padding: 5px;
   border-radius: 8px;
-  border: 2px solid #667eea;
+  border: 2px solid #d4af8a;
 }
 
 .btn-cantidad {
   width: 30px;
   height: 30px;
-  background: #667eea;
-  color: white;
+  background: #d4af8a;
+  color: #2d2d2d;
   border: none;
   border-radius: 6px;
   font-size: 18px;
@@ -157,7 +173,7 @@
 }
 
 .btn-cantidad:hover {
-  background: #764ba2;
+  background: #e6c5a8;
   transform: scale(1.1);
 }
 
@@ -166,7 +182,7 @@
   text-align: center;
   font-size: 16px;
   font-weight: 700;
-  color: #2d3436;
+  color: white;
 }
 
 /* ============================================
@@ -179,18 +195,21 @@
 .carrito-sticky {
   position: sticky;
   top: 100px;
-  background: white;
-  border-radius: 15px;
+  background: #5c4033;
+  border-radius: 20px;
   padding: 25px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(212, 175, 138, 0.3);
 }
 
 .carrito-title {
   font-size: 24px;
-  color: #2d3436;
+  color: white;
   margin-bottom: 20px;
   font-weight: 700;
   text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 /* ============================================
@@ -199,7 +218,12 @@
 .carrito-vacio {
   text-align: center;
   padding: 40px 20px;
-  color: #b2bec3;
+  color: #a0a0a0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
 }
 
 .carrito-vacio p:first-child {
@@ -240,13 +264,14 @@
   align-items: center;
   padding: 12px;
   margin-bottom: 10px;
-  background: #f8f9fa;
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .carrito-item:hover {
-  background: #e9ecef;
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .carrito-item-info {
@@ -258,14 +283,14 @@
 
 .carrito-item-nombre {
   font-size: 14px;
-  color: #2d3436;
+  color: white;
   font-weight: 600;
 }
 
 .carrito-item-cantidad {
   font-size: 12px;
-  color: #636e72;
-  background: white;
+  color: #d4af8a;
+  background: rgba(212, 175, 138, 0.2);
   padding: 2px 8px;
   border-radius: 4px;
   font-weight: 600;
@@ -273,7 +298,7 @@
 
 .carrito-item-precio {
   font-size: 14px;
-  color: #00b894;
+  color: #d4af8a;
   font-weight: 700;
 }
 
@@ -282,7 +307,7 @@
    ============================================ */
 .carrito-divider {
   height: 2px;
-  background: linear-gradient(to right, transparent, #667eea, transparent);
+  background: linear-gradient(to right, transparent, #d4af8a, transparent);
   margin: 20px 0;
 }
 
@@ -291,9 +316,10 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #8b6f47 0%, #a0826d 100%);
   border-radius: 10px;
   margin-bottom: 20px;
+  border: 1px solid rgba(212, 175, 138, 0.3);
 }
 
 .total-label {
@@ -304,7 +330,7 @@
 
 .total-precio {
   font-size: 28px;
-  color: white;
+  color: #d4af8a;
   font-weight: 700;
 }
 
@@ -320,9 +346,9 @@
 .btn-limpiar {
   flex: 1;
   padding: 12px;
-  background: #e74c3c;
-  color: white;
-  border: none;
+  background: rgba(212, 175, 138, 0.2);
+  color: #d4af8a;
+  border: 2px solid #d4af8a;
   border-radius: 8px;
   font-size: 14px;
   font-weight: 600;
@@ -331,16 +357,17 @@
 }
 
 .btn-limpiar:hover {
-  background: #c0392b;
+  background: #d4af8a;
+  color: #2d2d2d;
   transform: translateY(-2px);
 }
 
 .btn-ordenar {
   flex: 2;
   padding: 12px;
-  background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+  background: linear-gradient(135deg, #a0826d 0%, #8b6f47 100%);
   color: white;
-  border: none;
+  border: 2px solid #d4af8a;
   border-radius: 8px;
   font-size: 16px;
   font-weight: 700;
@@ -350,23 +377,24 @@
 
 .btn-ordenar:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 184, 148, 0.4);
+  box-shadow: 0 6px 20px rgba(212, 175, 138, 0.4);
+  background: linear-gradient(135deg, #8b6f47 0%, #725a3f 100%);
 }
 
 /* ============================================
    NOTA DEL CARRITO
    ============================================ */
 .carrito-nota {
-  background: #fff3cd;
+  background: rgba(212, 175, 138, 0.1);
   padding: 12px;
   border-radius: 8px;
-  border-left: 4px solid #ffc107;
+  border-left: 4px solid #d4af8a;
 }
 
 .carrito-nota p {
   margin: 0;
   font-size: 13px;
-  color: #856404;
+  color: #d4af8a;
   line-height: 1.5;
 }
 
