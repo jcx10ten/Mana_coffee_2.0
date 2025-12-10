@@ -1,11 +1,10 @@
-
 /* ==========================================
    PANEL ADMIN - LAYOUT PRINCIPAL
    ========================================== */
 .panel-admin {
   display: flex;
   min-height: 100vh;
-  background-color: #f5f5f5;
+  background-color: #f5f1e8;
 }
 
 /* ==========================================
@@ -13,7 +12,7 @@
    ========================================== */
 .admin-sidebar {
   width: 250px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1E0D00 0%, #2d1810 100%);
   color: white;
   padding: 20px 0;
   position: fixed;
@@ -87,7 +86,7 @@
   flex: 1;
   margin-left: 250px;
   padding: 30px;
-  background: #f8f9fa;
+  background: #f5f1e8;
 }
 
 .admin-header {
@@ -118,19 +117,19 @@
 }
 
 .menu-actual-badge {
-  background: linear-gradient(135deg, #00b894, #00cec9);
+  background: linear-gradient(135deg, #d4a574, #c9a547);
   color: white;
   padding: 10px 20px;
   border-radius: 25px;
   font-size: 14px;
   font-weight: 600;
-  box-shadow: 0 4px 10px rgba(0, 184, 148, 0.3);
+  box-shadow: 0 4px 10px rgba(212, 165, 116, 0.3);
 }
 
 .admin-content {
   background: white;
   border-radius: 15px;
-  padding: 35px;
+  padding: 30px;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
 }
 
@@ -144,12 +143,12 @@
 }
 
 .stat-card {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1E0D00 0%, #2d1810 100%);
   color: white;
   padding: 35px;
   border-radius: 15px;
   text-align: center;
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 8px 20px rgba(30, 13, 0, 0.3);
   transition: transform 0.3s ease;
 }
 
@@ -189,10 +188,10 @@
 .filters-bar {
   display: flex;
   gap: 15px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   flex-wrap: wrap;
-  padding: 20px;
-  background: #f8f9fa;
+  padding: 15px;
+  background: #faf8f5;
   border-radius: 12px;
 }
 
@@ -209,8 +208,8 @@
 .filters-bar input:focus,
 .filters-bar select:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: #1E0D00;
+  box-shadow: 0 0 0 3px rgba(30, 13, 0, 0.1);
 }
 
 .filters-bar input[type="text"] {
@@ -220,7 +219,7 @@
 
 .btn-filtrar {
   padding: 12px 30px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #1E0D00, #2d1810);
   color: white;
   border: none;
   border-radius: 10px;
@@ -228,12 +227,12 @@
   font-size: 15px;
   font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 12px rgba(30, 13, 0, 0.3);
 }
 
 .btn-filtrar:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 6px 16px rgba(30, 13, 0, 0.4);
 }
 
 /* ==========================================
@@ -241,6 +240,8 @@
    ========================================== */
 .table-container {
   overflow-x: auto;
+  overflow-y: auto;
+  max-height: 600px;
   border-radius: 12px;
   border: 1px solid #e0e0e0;
 }
@@ -251,24 +252,24 @@
 }
 
 .admin-table thead {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1E0D00 0%, #2d1810 100%);
 }
 
 .admin-table th {
-  padding: 18px 15px;
+  padding: 14px 15px;
   text-align: left;
   font-weight: 600;
   color: white;
-  font-size: 15px;
+  font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .admin-table td {
-  padding: 16px 15px;
+  padding: 12px 15px;
   border-bottom: 1px solid #f0f0f0;
   color: #555;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .admin-table tbody tr {
@@ -276,7 +277,7 @@
 }
 
 .admin-table tbody tr:hover {
-  background: #f8f9fa;
+  background: #faf8f5;
 }
 
 /* ==========================================
@@ -331,7 +332,7 @@
 
 .estado-select:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: #1E0D00;
 }
 
 .btn-editar,
@@ -426,7 +427,7 @@
   align-items: center;
   padding: 25px 30px;
   border-bottom: 2px solid #f0f0f0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1E0D00 0%, #2d1810 100%);
   border-radius: 20px 20px 0 0;
 }
 
@@ -486,8 +487,8 @@
 .modal-form select:focus,
 .modal-form textarea:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: #1E0D00;
+  box-shadow: 0 0 0 3px rgba(30, 13, 0, 0.1);
 }
 
 .modal-actions {
@@ -535,11 +536,11 @@
 }
 
 .menu-upload-info {
-  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  background: linear-gradient(135deg, #faf8f5, #f5f1e8);
   padding: 25px;
   border-radius: 12px;
   margin-bottom: 25px;
-  border-left: 4px solid #667eea;
+  border-left: 4px solid #1E0D00;
 }
 
 .info-text {
@@ -587,19 +588,19 @@
 .file-input-button {
   display: block;
   padding: 20px 35px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #1E0D00, #2d1810);
   color: white;
   border-radius: 12px;
   font-weight: 600;
   font-size: 16px;
   transition: all 0.3s ease;
   text-align: center;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 15px rgba(30, 13, 0, 0.3);
 }
 
 .file-input-button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 8px 20px rgba(30, 13, 0, 0.4);
 }
 
 .file-info {
