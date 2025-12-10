@@ -14,20 +14,29 @@ async function initializeAdmin(db) {
       }
 
       if (usuario) {
-        if (usuario.rol === 'admin') {
-          console.log('✅ Admin ya existe con rol correcto');
-          resolve(true);
-        } else {
-          db.run('UPDATE usuarios SET rol = ? WHERE id = ?', ['admin', usuario.id], (err) => {
-            if (err) {
-              console.error('❌ Error actualizando rol:', err);
-              resolve(false);
-            } else {
-              console.log('✅ Admin actualizado a rol admin');
-              resolve(true);
+        bcrypt.hash(adminPassword, 10, (err, hashedPassword) => {
+          if (err) {
+            console.error('❌ Error hasheando contraseña:', err);
+            resolve(false);
+            return;
+          }
+
+          db.run(
+            'UPDATE usuarios SET nombre = ?, password = ?, rol = ? WHERE id = ?',
+            [adminName, hashedPassword, 'admin', usuario.id],
+            (err) => {
+              if (err) {
+                console.error('❌ Error actualizando admin:', err);
+                resolve(false);
+              } else {
+                console.log('✅ Admin actualizado (nombre, rol y contraseña)');
+                console.log('   Email: jcx10ten@gmail.com');
+                console.log('   Contraseña: admin123');
+                resolve(true);
+              }
             }
-          });
-        }
+          );
+        });
       } else {
         bcrypt.hash(adminPassword, 10, (err, hashedPassword) => {
           if (err) {

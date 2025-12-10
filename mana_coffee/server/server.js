@@ -85,13 +85,17 @@ db.run(`
     fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
   )
-`, async (err) => {
+`, (err) => {
   if (err) {
     console.error('❌ Error al crear tabla reservas:', err);
   } else {
     console.log('✅ Tabla reservas lista');
     
-    await initializeAdmin(db);
+    initializeAdmin(db).then(() => {
+      console.log('✅ Verificación de admin completada');
+    }).catch((error) => {
+      console.error('❌ Error en inicialización de admin:', error);
+    });
   }
 });
 
