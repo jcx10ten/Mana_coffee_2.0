@@ -2,7 +2,8 @@
   "name": "mana-coffee-fullstack",
   "version": "1.0.0",
   "scripts": {
-    "install-all": "cd server && npm install && cd ../mana_coffee && npm install",
+    "install": "npm run install-deps",
+    "install-deps": "cd server && npm install && cd ../mana_coffee && npm install",
     "build": "cd mana_coffee && npm run build",
     "start": "cd server && node server.js"
   },
