@@ -1,35 +1,43 @@
 /* ============================================
-   HERO SECTION - DISEÑO DE 2 COLUMNAS
-   ============================================ */
-
+   HERO SECTION - 2 COLUMNAS
+============================================ */
 .hero-section {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 0.9fr 1.1fr;
   min-height: 100vh;
-  margin: 0;
   padding: 0;
+  margin: 0;
+  background: #f5f1e8;
 }
 
 /* ============================================
-   LADO IZQUIERDO - IMAGEN
-   ============================================ */
+   LADO IZQUIERDO - IMAGEN SIN DEGRADADO
+============================================ */
 .hero-left {
   position: relative;
   overflow: hidden;
-  background: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+  background: #f5f1e8; /* ✅ Fondo crema uniforme */
 }
 
 .hero-imagen {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: left center; /* ✅ Alineado a la izquierda */
   display: block;
+  position: relative;
+  z-index: 1;
 }
 
+/* ✅ QUITADO: Ya no hay degradado sobre la imagen */
+
 /* ============================================
-   LADO DERECHO - CONTENIDO CON DIFUMINADO
-   ============================================ */
+   LADO DERECHO - CONTENIDO
+============================================ */
 .hero-right {
   background: #f5f1e8;
   display: flex;
@@ -37,102 +45,199 @@
   align-items: center;
   padding: 80px 60px;
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* ✅ Permite que los brillitos se salgan */
 }
 
-/* Difuminado rojo sutil en diagonal */
-.hero-right::before {
-  content: '';
+/* Fondos difuminados sutiles */
+.hero-right::before,
+.hero-right::after {
+  content: "";
   position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.hero-right::before {
   top: -20%;
   right: -10%;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(255, 100, 100, 0.08) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 160, 130, 0.1), transparent 70%);
 }
 
 .hero-right::after {
-  content: '';
-  position: absolute;
-  bottom: -15%;
+  bottom: -10%;
   left: -5%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(255, 150, 120, 0.06) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 200, 150, 0.08), transparent 70%);
 }
 
 .hero-content {
-  text-align: center;
   max-width: 650px;
-  animation: fadeIn 1.2s ease-in;
+  text-align: center;
   position: relative;
   z-index: 1;
+  animation: fadeIn 1.2s ease-in-out;
 }
 
 /* ============================================
-   TEXTOS Y LOGO
-   ============================================ */
+   TEXTOS
+============================================ */
 .hero-bienvenido {
-  font-size: 36px;
+  font-size: 32px;
   font-weight: 400;
   letter-spacing: 4px;
-  color: #000000;
-  margin-bottom: 30px;
+  color: #000;
+  margin-bottom: 20px;
   text-transform: uppercase;
+}
+
+.hero-restobar {
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: 8px;
+  margin: 15px 0 30px;
+  text-transform: uppercase;
+  color: #000;
+}
+
+.hero-subtitle {
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 300;
+  margin: 30px 0 50px;
+  color: #333;
+}
+
+/* ============================================
+   LOGO Y BRILLITOS (TAMAÑO 400px)
+============================================ */
+.hero-logo-container {
+  position: relative;
+  max-width: 400px;
+  margin: 30px auto;
+  z-index: 5; /* ✅ Asegurar que esté encima de los brillitos */
 }
 
 .hero-logo-grande {
   width: 100%;
-  max-width: 550px;
-  height: auto;
-  margin: 30px 0;
   animation: logoAppear 1.4s ease-in-out;
+  position: relative;
+  z-index: 2;
 }
 
-.hero-restobar {
-  font-size: 32px;
-  font-weight: 300;
-  letter-spacing: 10px;
-  color: #000000;
-  margin: 15px 0 40px 0;
-  text-transform: uppercase;
+/* ============================================
+   ✨ BRILLITOS EN LA INTERSECCIÓN
+============================================ */
+.brillito {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  opacity: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1; /* ✅ Detrás del logo pero visible */
+  animation: sparkle 4s ease-in-out infinite;
+  filter: blur(100px);
 }
 
-.hero-subtitle {
-  font-size: 24px;
-  font-weight: 300;
-  color: #333333;
-  margin: 40px 0 60px 0;
-  line-height: 1.6;
-  font-style: italic;
+/* ✅ Posicionados en la INTERSECCIÓN de las dos columnas */
+/* Brillito 1 - Superior Izquierdo (en la intersección) */
+.brillito-1 { 
+  top: -250px; 
+  left: -550px; /* ✅ Más a la izquierda para que cruce la división */
+  background: radial-gradient(
+    circle, 
+    rgba(255, 200, 100, 0.5) 0%, 
+    rgba(255, 180, 80, 0.3) 35%, 
+    rgba(255, 160, 60, 0.1) 60%, 
+    transparent 75%
+  );
+  animation-delay: 0s; 
+}
+
+/* Brillito 2 - Superior Derecho (más cerca de la intersección) */
+.brillito-2 { 
+  top: -200px; 
+  left: -350px; /* ✅ Centrado en la intersección */
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(
+    circle, 
+    rgba(255, 220, 150, 0.6) 0%, 
+    rgba(255, 200, 120, 0.35) 35%, 
+    rgba(255, 180, 90, 0.15) 60%, 
+    transparent 75%
+  );
+  animation-delay: 1s; 
+}
+
+/* Brillito 3 - Inferior Izquierdo (en la intersección) */
+.brillito-3 { 
+  bottom: -250px; 
+  left: -550px; /* ✅ Más a la izquierda */
+  background: radial-gradient(
+    circle, 
+    rgba(255, 160, 130, 0.45) 0%, 
+    rgba(255, 140, 100, 0.25) 35%, 
+    rgba(255, 120, 80, 0.1) 60%, 
+    transparent 75%
+  );
+  animation-delay: 2s; 
+}
+
+/* Brillito 4 - Inferior Derecho (cerca de la intersección) */
+.brillito-4 { 
+  bottom: -200px; 
+  left: -350px; /* ✅ Centrado en la intersección */
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(
+    circle, 
+    rgba(255, 190, 140, 0.55) 0%, 
+    rgba(255, 170, 110, 0.3) 35%, 
+    rgba(255, 150, 90, 0.12) 60%, 
+    transparent 75%
+  );
+  animation-delay: 3s; 
+}
+
+/* Animación de brillito - Aparecen y desaparecen suavemente */
+@keyframes sparkle {
+  0%, 100% { 
+    opacity: 0; 
+    transform: scale(0.85); 
+  }
+  50% { 
+    opacity: 1; 
+    transform: scale(1.15); 
+  }
 }
 
 /* ============================================
    BOTÓN
-   ============================================ */
+============================================ */
 .hero-button {
-  padding: 20px 70px;
-  font-size: 19px;
+  padding: 18px 60px;
+  font-size: 18px;
   background: #2d2d2d;
-  color: #ffffff;
+  color: #fff;
   border: none;
   border-radius: 50px;
   cursor: pointer;
   font-weight: 600;
-  letter-spacing: 1.5px;
   text-transform: uppercase;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  letter-spacing: 1.5px;
   transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
 }
 
 .hero-button:hover {
   background: #3d3d3d;
   transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
 }
 
 .hero-button:active {
@@ -141,30 +246,26 @@
 
 /* ============================================
    ANIMACIONES
-   ============================================ */
+============================================ */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes logoAppear {
-  from {
-    opacity: 0;
-    transform: scale(0.85);
+  from { 
+    opacity: 0; 
+    transform: scale(0.85); 
   }
-  to {
-    opacity: 1;
-    transform: scale(1);
+  to { 
+    opacity: 1; 
+    transform: scale(1); 
   }
 }
 
 /* ============================================
    RESPONSIVE - TABLETS
-   ============================================ */
+============================================ */
 @media (max-width: 1024px) {
   .hero-section {
     grid-template-columns: 1fr;
@@ -185,8 +286,45 @@
     font-size: 30px;
   }
 
-  .hero-logo-grande {
-    max-width: 450px;
+  .hero-logo-container {
+    max-width: 400px;
+  }
+
+  /* Brillitos más pequeños en tablet */
+  .brillito {
+    width: 500px;
+    height: 500px;
+  }
+
+  .brillito-2,
+  .brillito-4 {
+    width: 450px;
+    height: 450px;
+  }
+
+  /* Reposicionar brillitos para centrarlos */
+  .brillito-1 { 
+    top: -150px; 
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .brillito-2 { 
+    top: -100px; 
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .brillito-3 { 
+    bottom: -150px; 
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .brillito-4 { 
+    bottom: -100px; 
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .hero-restobar {
@@ -201,7 +339,7 @@
 
 /* ============================================
    RESPONSIVE - MÓVILES
-   ============================================ */
+============================================ */
 @media (max-width: 768px) {
   .hero-left {
     height: 45vh;
@@ -216,8 +354,21 @@
     letter-spacing: 2px;
   }
 
-  .hero-logo-grande {
-    max-width: 320px;
+  .hero-logo-container {
+    max-width: 300px;
+  }
+
+  /* Brillitos más pequeños en móvil */
+  .brillito {
+    width: 400px;
+    height: 400px;
+    filter: blur(70px);
+  }
+
+  .brillito-2,
+  .brillito-4 {
+    width: 350px;
+    height: 350px;
   }
 
   .hero-restobar {
@@ -233,5 +384,30 @@
   .hero-button {
     padding: 16px 45px;
     font-size: 17px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE - MÓVILES PEQUEÑOS
+============================================ */
+@media (max-width: 480px) {
+  .hero-logo-container {
+    max-width: 280px;
+  }
+
+  .brillito {
+    width: 350px;
+    height: 350px;
+  }
+
+  .brillito-2,
+  .brillito-4 {
+    width: 300px;
+    height: 300px;
+  }
+
+  .hero-button {
+    width: 90%;
+    padding: 14px 30px;
   }
 }
