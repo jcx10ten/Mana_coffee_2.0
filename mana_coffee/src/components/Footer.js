@@ -30,24 +30,45 @@ function Footer() {
           </ul>
         </div>
 
-        {/* REDES SOCIALES EN COLUMNA */}
-        <div className="footer-section footer-social-column">
-          <h4 className="footer-subtitle">Síguenos</h4>
+        {/* REDES SOCIALES */}
+        <div className="footer-social-column">
 
           <div className="footer-social-item">
             <img src={InstagramIcon} alt="Instagram" className="footer-social-icon" />
-            <span className="footer-social-text">@manacoffee</span>
+            <a
+              href="https://www.instagram.com/mana_coffee_pam/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-social-text footer-social-link"
+            >
+              Instagram
+            </a>
           </div>
 
           <div className="footer-social-item">
             <img src={TiktokIcon} alt="TikTok" className="footer-social-icon" />
-            <span className="footer-social-text">@manacoffee</span>
+            <a
+              href="https://www.tiktok.com/@mana.coffee.pampl"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-social-text footer-social-link"
+            >
+              TikTok
+            </a>
           </div>
 
           <div className="footer-social-item">
             <img src={FacebookIcon} alt="Facebook" className="footer-social-icon" />
-            <span className="footer-social-text">Mana Coffee</span>
+            <a
+              href="https://www.facebook.com/people/Man%C3%A1-Coffee-Pna/61572704497545/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-social-text footer-social-link"
+            >
+              Facebook
+            </a>
           </div>
+
         </div>
 
       </div>
