@@ -125,14 +125,6 @@ app.get('/api', (req, res) => {
   });
 });
 
-// ==================== MANEJO DE ERRORES 404 ====================
-app.use((req, res) => {
-  res.status(404).json({ 
-    error: 'Ruta no encontrada',
-    ruta_solicitada: req.url
-  });
-});
-
 // ==================== SERVIR FRONTEND EN PRODUCCIÓN ====================
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../build')));
@@ -141,6 +133,14 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(__dirname, '../build/index.html'));
   });
 }
+
+// ==================== MANEJO DE ERRORES 404 ====================
+app.use((req, res) => {
+  res.status(404).json({ 
+    error: 'Ruta no encontrada',
+    ruta_solicitada: req.url
+  });
+});
 
 // ==================== INICIAR SERVIDOR ====================
 app.listen(PORT, () => {
