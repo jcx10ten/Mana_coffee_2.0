@@ -2,11 +2,11 @@
   "name": "mana-coffee-fullstack",
   "version": "1.0.0",
   "scripts": {
-    "install-deps": "npm --prefix ./server install && npm --prefix ./mana_coffee install",
+    "postinstall": "npm --prefix ./server install && npm --prefix ./mana_coffee install",
     "build": "npm --prefix ./mana_coffee run build",
     "start": "node ./server/server.js"
   },
   "engines": {
-    "node": ">=18.0.0"
+     "node": ">=18.18.0 <25.2.1"
   }
 }
