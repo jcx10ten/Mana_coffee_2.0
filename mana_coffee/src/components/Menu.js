@@ -6,9 +6,6 @@ function Menu() {
   const [menuPDF, setMenuPDF] = useState(null);
   const [cargandoPDF, setCargandoPDF] = useState(true);
 
-  // ============================================
-  // CARGAR MENÚ EN PDF AL MONTAR
-  // ============================================
   useEffect(() => {
     cargarMenuPDF();
   }, []);
@@ -16,9 +13,7 @@ function Menu() {
   const cargarMenuPDF = async () => {
     try {
       const response = await fetch('http://localhost:5000/api/menu/actual');
-      
       if (!response.ok) throw new Error('Error al cargar menú');
-
       const data = await response.json();
       setMenuPDF(data.menu);
     } catch (error) {
@@ -28,12 +23,10 @@ function Menu() {
     }
   };
 
-  // Toggle para abrir/cerrar categorías
   const toggleCategoria = (categoria) => {
     setCategoriaAbierta(categoriaAbierta === categoria ? null : categoria);
   };
 
-  // MENÚ DE CAFETERÍA
   const menuCafeteria = [
     { nombre: 'Café Nevado', descripcion: 'Café, Crema batida', precio: '5.000 - 6.500' },
     { nombre: 'Chocolate', descripcion: 'Chocolate en agua o leche', precio: '3.000 - 3.500' },
@@ -58,7 +51,6 @@ function Menu() {
     { nombre: 'Fresas con Crema Premium', descripcion: 'Con chocolate, piazza, mini chips', precio: '12.000' }
   ];
 
-  // MENÚ DE DESAYUNOS
   const menuDesayunos = [
     { nombre: 'Caldo de Costilla', descripcion: 'Acompañado de pan o arepa y bebida caliente', precio: '12.900' },
     { nombre: 'Caldo con huevo', descripcion: 'En agua o leche con bebida caliente', precio: '12.900' },
@@ -73,7 +65,6 @@ function Menu() {
     { nombre: 'Desayuno Perfecto', descripcion: 'Caldo, arepa/pan, huevos y bebida caliente', precio: '19.500' }
   ];
 
-  // MENÚ DE ALMUERZOS
   const menuAlmuerzos = [
     { nombre: 'Churrasco', descripcion: 'Con ensalada, papa criolla al ajillo, chorizo', precio: '47.000' },
     { nombre: 'Filet Mignon', descripcion: 'Medallones de Res con Salsa de Camarones', precio: '48.000' },
@@ -90,7 +81,6 @@ function Menu() {
     { nombre: 'Salmón a la Toscana', descripcion: 'Salmón con patacones y ensalada', precio: '52.000' }
   ];
 
-  // MENÚ DE COMIDAS RÁPIDAS
   const menuComidasRapidas = [
     { nombre: 'Hamburguesa Clásica', descripcion: 'Carne artesanal, jamón, queso, vegetales', precio: '16.000' },
     { nombre: 'Hamburguesa Alemana', descripcion: 'Con mermelada de tocineta y cebolla caramelizada', precio: '21.000' },
@@ -113,177 +103,148 @@ function Menu() {
 
   return (
     <section className="menu-page">
-      <div className="menu-header">
-        <h1 className="menu-title">Nuestro Menú</h1>
-        <p className="menu-subtitle">Explora nuestras deliciosas opciones</p>
+      {/* Brillitos de fondo */}
+      <div className="menu-brillos">
+        <div className="menu-brillo brillo-amarillo brillo-top-right"></div>
+        <div className="menu-brillo brillo-dorado brillo-mid-left"></div>
+        <div className="menu-brillo brillo-naranja brillo-bottom-left"></div>
+        <div className="menu-brillo brillo-rojo brillo-mid-right"></div>
+        <div className="menu-brillo brillo-rose brillo-bottom-center"></div>
       </div>
 
-      {/* ============================================
-          ✅ SECCIÓN DEL PDF DEL MENÚ (ARRIBA)
-          ============================================ */}
-      <div className="menu-pdf-section">
-        {cargandoPDF ? (
-          <div className="pdf-loading">
-            <div className="loading-spinner"></div>
-            <p>Cargando menú...</p>
-          </div>
-        ) : menuPDF ? (
-          <div className="pdf-container">
-            <div className="pdf-header-info">
-              <h2 className="pdf-title">📄 Menú Actualizado</h2>
-              <p className="pdf-date">
-                Última actualización: {new Date(menuPDF.fecha_subida).toLocaleDateString('es-CO', {
-                  day: 'numeric',
-                  month: 'long',
-                  year: 'numeric'
-                })}
-              </p>
-            </div>
-            
-            <div className="pdf-viewer-wrapper">
-              <iframe
-                src={`http://localhost:5000/api/menu/pdf/${menuPDF.nombre_archivo}`}
-                className="pdf-viewer"
-                title="Menú Mana Coffee"
-              />
-            </div>
-
-            <div className="pdf-actions">
-              <a 
-                href={`http://localhost:5000/api/menu/pdf/${menuPDF.nombre_archivo}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-ver-pdf"
+      <div className="menu-main-container">
+        {/* COLUMNA IZQUIERDA: DESPLEGABLES */}
+        <div className="menu-left-section">
+          <h2 className="menu-section-title">Nuestro Menú</h2>
+          <div className="menu-container">
+            {/* CAFETERÍA */}
+            <div className="menu-categoria">
+              <button 
+                className={`menu-categoria-header ${categoriaAbierta === 'cafeteria' ? 'activo' : ''}`}
+                onClick={() => toggleCategoria('cafeteria')}
               >
-                🔍 Ver en pantalla completa
-              </a>
-              <a 
-                href={`http://localhost:5000/api/menu/pdf/${menuPDF.nombre_archivo}`}
-                download
-                className="btn-descargar-pdf"
+                <span className="menu-categoria-nombre">Menú de Cafetería</span>
+                <span className="menu-categoria-flecha">{categoriaAbierta === 'cafeteria' ? '▲' : '▼'}</span>
+              </button>
+              {categoriaAbierta === 'cafeteria' && (
+                <div className="menu-items-grid">
+                  {menuCafeteria.map((item, index) => (
+                    <div key={index} className="menu-item-card">
+                      <h3 className="menu-item-nombre">{item.nombre}</h3>
+                      <p className="menu-item-descripcion">{item.descripcion}</p>
+                      <p className="menu-item-precio">${item.precio}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* DESAYUNOS */}
+            <div className="menu-categoria">
+              <button 
+                className={`menu-categoria-header ${categoriaAbierta === 'desayunos' ? 'activo' : ''}`}
+                onClick={() => toggleCategoria('desayunos')}
               >
-                ⬇️ Descargar PDF
-              </a>
+                <span className="menu-categoria-nombre">Menú de Desayunos</span>
+                <span className="menu-categoria-flecha">{categoriaAbierta === 'desayunos' ? '▲' : '▼'}</span>
+              </button>
+              {categoriaAbierta === 'desayunos' && (
+                <div className="menu-items-grid">
+                  {menuDesayunos.map((item, index) => (
+                    <div key={index} className="menu-item-card">
+                      <h3 className="menu-item-nombre">{item.nombre}</h3>
+                      <p className="menu-item-descripcion">{item.descripcion}</p>
+                      <p className="menu-item-precio">${item.precio}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* ALMUERZOS */}
+            <div className="menu-categoria">
+              <button 
+                className={`menu-categoria-header ${categoriaAbierta === 'almuerzos' ? 'activo' : ''}`}
+                onClick={() => toggleCategoria('almuerzos')}
+              >
+                <span className="menu-categoria-nombre">Menú de Almuerzos</span>
+                <span className="menu-categoria-flecha">{categoriaAbierta === 'almuerzos' ? '▲' : '▼'}</span>
+              </button>
+              {categoriaAbierta === 'almuerzos' && (
+                <div className="menu-items-grid">
+                  {menuAlmuerzos.map((item, index) => (
+                    <div key={index} className="menu-item-card">
+                      <h3 className="menu-item-nombre">{item.nombre}</h3>
+                      <p className="menu-item-descripcion">{item.descripcion}</p>
+                      <p className="menu-item-precio">${item.precio}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* COMIDAS RÁPIDAS */}
+            <div className="menu-categoria">
+              <button 
+                className={`menu-categoria-header ${categoriaAbierta === 'rapidas' ? 'activo' : ''}`}
+                onClick={() => toggleCategoria('rapidas')}
+              >
+                <span className="menu-categoria-nombre">Menú de Comidas Rápidas</span>
+                <span className="menu-categoria-flecha">{categoriaAbierta === 'rapidas' ? '▲' : '▼'}</span>
+              </button>
+              {categoriaAbierta === 'rapidas' && (
+                <div className="menu-items-grid">
+                  {menuComidasRapidas.map((item, index) => (
+                    <div key={index} className="menu-item-card">
+                      <h3 className="menu-item-nombre">{item.nombre}</h3>
+                      <p className="menu-item-descripcion">{item.descripcion}</p>
+                      <p className="menu-item-precio">${item.precio}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
-        ) : (
-          <div className="pdf-no-disponible">
-            <p className="pdf-no-disponible-icon">📄</p>
-            <p className="pdf-no-disponible-text">
-              Menú en PDF no disponible en este momento
-            </p>
-            <p className="pdf-no-disponible-subtext">
-              Por favor, consulta el menú detallado más abajo
-            </p>
-          </div>
-        )}
-      </div>
-
-      {/* ============================================
-          SEPARADOR VISUAL
-          ============================================ */}
-      <div className="menu-separator">
-        <div className="separator-line"></div>
-        <span className="separator-text">O explora por categorías</span>
-        <div className="separator-line"></div>
-      </div>
-
-      {/* ============================================
-          MENÚ DESPLEGABLE (ABAJO)
-          ============================================ */}
-      <div className="menu-container">
-        {/* CAFETERÍA */}
-        <div className="menu-categoria">
-          <button 
-            className={`menu-categoria-header ${categoriaAbierta === 'cafeteria' ? 'activo' : ''}`}
-            onClick={() => toggleCategoria('cafeteria')}
-          >
-            <span className="menu-categoria-icono">☕</span>
-            <span className="menu-categoria-nombre">Menú de Cafetería</span>
-            <span className="menu-categoria-flecha">{categoriaAbierta === 'cafeteria' ? '▲' : '▼'}</span>
-          </button>
-          
-          {categoriaAbierta === 'cafeteria' && (
-            <div className="menu-items-grid">
-              {menuCafeteria.map((item, index) => (
-                <div key={index} className="menu-item-card">
-                  <h3 className="menu-item-nombre">{item.nombre}</h3>
-                  <p className="menu-item-descripcion">{item.descripcion}</p>
-                  <p className="menu-item-precio">${item.precio}</p>
-                </div>
-              ))}
-            </div>
-          )}
         </div>
 
-        {/* DESAYUNOS */}
-        <div className="menu-categoria">
-          <button 
-            className={`menu-categoria-header ${categoriaAbierta === 'desayunos' ? 'activo' : ''}`}
-            onClick={() => toggleCategoria('desayunos')}
-          >
-            <span className="menu-categoria-icono">🍳</span>
-            <span className="menu-categoria-nombre">Menú de Desayunos</span>
-            <span className="menu-categoria-flecha">{categoriaAbierta === 'desayunos' ? '▲' : '▼'}</span>
-          </button>
-          
-          {categoriaAbierta === 'desayunos' && (
-            <div className="menu-items-grid">
-              {menuDesayunos.map((item, index) => (
-                <div key={index} className="menu-item-card">
-                  <h3 className="menu-item-nombre">{item.nombre}</h3>
-                  <p className="menu-item-descripcion">{item.descripcion}</p>
-                  <p className="menu-item-precio">${item.precio}</p>
-                </div>
-              ))}
+        {/* COLUMNA DERECHA: PDF */}
+        <div className="menu-right-section">
+          <h2 className="menu-section-title">Menú del Día</h2>
+          {cargandoPDF ? (
+            <div className="pdf-loading">
+              <div className="loading-spinner"></div>
+              <p>Cargando menú...</p>
             </div>
-          )}
-        </div>
-
-        {/* ALMUERZOS */}
-        <div className="menu-categoria">
-          <button 
-            className={`menu-categoria-header ${categoriaAbierta === 'almuerzos' ? 'activo' : ''}`}
-            onClick={() => toggleCategoria('almuerzos')}
-          >
-            <span className="menu-categoria-icono">🍽️</span>
-            <span className="menu-categoria-nombre">Menú de Almuerzos</span>
-            <span className="menu-categoria-flecha">{categoriaAbierta === 'almuerzos' ? '▲' : '▼'}</span>
-          </button>
-          
-          {categoriaAbierta === 'almuerzos' && (
-            <div className="menu-items-grid">
-              {menuAlmuerzos.map((item, index) => (
-                <div key={index} className="menu-item-card">
-                  <h3 className="menu-item-nombre">{item.nombre}</h3>
-                  <p className="menu-item-descripcion">{item.descripcion}</p>
-                  <p className="menu-item-precio">${item.precio}</p>
-                </div>
-              ))}
+          ) : menuPDF ? (
+            <div className="pdf-container">
+              <div className="pdf-viewer-wrapper">
+                <iframe
+                  src={`http://localhost:5000/api/menu/pdf/${menuPDF.nombre_archivo}`}
+                  className="pdf-viewer"
+                  title="Menú Mana Coffee"
+                />
+              </div>
+              <div className="pdf-actions">
+                <a 
+                  href={`http://localhost:5000/api/menu/pdf/${menuPDF.nombre_archivo}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-ver-pdf"
+                >
+                  Ver
+                </a>
+                <a 
+                  href={`http://localhost:5000/api/menu/pdf/${menuPDF.nombre_archivo}`}
+                  download
+                  className="btn-descargar-pdf"
+                >
+                  Descargar
+                </a>
+              </div>
             </div>
-          )}
-        </div>
-
-        {/* COMIDAS RÁPIDAS */}
-        <div className="menu-categoria">
-          <button 
-            className={`menu-categoria-header ${categoriaAbierta === 'rapidas' ? 'activo' : ''}`}
-            onClick={() => toggleCategoria('rapidas')}
-          >
-            <span className="menu-categoria-icono">🍔</span>
-            <span className="menu-categoria-nombre">Menú de Comidas Rápidas</span>
-            <span className="menu-categoria-flecha">{categoriaAbierta === 'rapidas' ? '▲' : '▼'}</span>
-          </button>
-          
-          {categoriaAbierta === 'rapidas' && (
-            <div className="menu-items-grid">
-              {menuComidasRapidas.map((item, index) => (
-                <div key={index} className="menu-item-card">
-                  <h3 className="menu-item-nombre">{item.nombre}</h3>
-                  <p className="menu-item-descripcion">{item.descripcion}</p>
-                  <p className="menu-item-precio">${item.precio}</p>
-                </div>
-              ))}
+          ) : (
+            <div className="pdf-no-disponible">
+              <p className="pdf-no-disponible-text">PDF no disponible</p>
             </div>
           )}
         </div>

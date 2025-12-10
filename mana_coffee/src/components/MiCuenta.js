@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './MiCuenta.css';
+const API_URL = process.env.REACT_APP_API_URL || '';
 
 function MiCuenta() {
   const [reservas, setReservas] = useState([]);
@@ -23,7 +24,7 @@ function MiCuenta() {
         return;
       }
 
-      const response = await fetch('http://localhost:5000/api/reservas/mis-reservas', {
+      const response = await fetch(`${API_URL}/api/reservas/mis-reservas`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -75,7 +76,7 @@ function MiCuenta() {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/reservas/${id}`, {
+      const response = await fetch(`${API_URL}/api/reservas/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -104,7 +105,7 @@ function MiCuenta() {
     
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/reservas/${reservaEditando.id}`, {
+      const response = await fetch(`${API_URL}/api/reservas/${reservaEditando.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

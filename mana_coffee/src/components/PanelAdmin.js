@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './PanelAdmin.css';
 
+// ✅ Definir API_URL al inicio
+const API_URL = process.env.REACT_APP_API_URL || '';
+
 function PanelAdmin() {
   const [vista, setVista] = useState('dashboard');
   const [dashboard, setDashboard] = useState(null);
@@ -17,7 +20,7 @@ function PanelAdmin() {
   const [reservaEditar, setReservaEditar] = useState(null);
   const [mostrarModalEditar, setMostrarModalEditar] = useState(false);
 
-  // ✅ NUEVO: Estados para actualizar menú
+  // Estados para actualizar menú
   const [mostrarModalMenu, setMostrarModalMenu] = useState(false);
   const [archivoMenu, setArchivoMenu] = useState(null);
   const [subiendoMenu, setSubiendoMenu] = useState(false);
@@ -33,18 +36,18 @@ function PanelAdmin() {
     }
   }, [vista]);
 
-  // ✅ NUEVO: Cargar menú actual al montar
+  // Cargar menú actual al montar
   useEffect(() => {
     cargarMenuActual();
   }, []);
 
   // ============================================
-  // ✅ NUEVO: CARGAR MENÚ ACTUAL
+  // CARGAR MENÚ ACTUAL
   // ============================================
   const cargarMenuActual = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/menu/actual', {
+      const response = await fetch(`${API_URL}/api/menu/actual`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
 
@@ -58,7 +61,7 @@ function PanelAdmin() {
   };
 
   // ============================================
-  // ✅ NUEVO: SUBIR NUEVO MENÚ
+  // SUBIR NUEVO MENÚ
   // ============================================
   const subirNuevoMenu = async (e) => {
     e.preventDefault();
@@ -87,7 +90,7 @@ function PanelAdmin() {
       const formData = new FormData();
       formData.append('menu', archivoMenu);
 
-      const response = await fetch('http://localhost:5000/api/menu/subir', {
+      const response = await fetch(`${API_URL}/api/menu/subir`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -118,7 +121,7 @@ function PanelAdmin() {
     setCargando(true);
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/admin/dashboard', {
+      const response = await fetch(`${API_URL}/api/admin/dashboard`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
 
@@ -147,7 +150,7 @@ function PanelAdmin() {
       if (busqueda) params.append('buscar', busqueda);
 
       const response = await fetch(
-        `http://localhost:5000/api/admin/reservas?${params.toString()}`,
+        `${API_URL}/api/admin/reservas?${params.toString()}`,
         { headers: { 'Authorization': `Bearer ${token}` } }
       );
 
@@ -170,7 +173,7 @@ function PanelAdmin() {
     setCargando(true);
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/admin/usuarios', {
+      const response = await fetch(`${API_URL}/api/admin/usuarios`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
 
@@ -194,7 +197,7 @@ function PanelAdmin() {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/admin/reservas/${id}`, {
+      const response = await fetch(`${API_URL}/api/admin/reservas/${id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -215,7 +218,7 @@ function PanelAdmin() {
   const cambiarEstado = async (id, nuevoEstado) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/reservas/${id}/estado`, {
+      const response = await fetch(`${API_URL}/api/reservas/${id}/estado`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -254,7 +257,7 @@ function PanelAdmin() {
     try {
       const token = localStorage.getItem('token');
       const response = await fetch(
-        `http://localhost:5000/api/admin/reservas/${reservaEditar.id}`,
+        `${API_URL}/api/admin/reservas/${reservaEditar.id}`,
         {
           method: 'PUT',
           headers: {
@@ -293,7 +296,7 @@ function PanelAdmin() {
     try {
       const token = localStorage.getItem('token');
       const response = await fetch(
-        `http://localhost:5000/api/admin/usuarios/${id}/rol`,
+        `${API_URL}/api/admin/usuarios/${id}/rol`,
         {
           method: 'PATCH',
           headers: {
@@ -345,7 +348,7 @@ function PanelAdmin() {
             👥 Usuarios
           </button>
 
-          {/* ✅ NUEVO: BOTÓN PARA ACTUALIZAR MENÚ */}
+          {/* BOTÓN PARA ACTUALIZAR MENÚ */}
           <button 
             className="admin-menu-btn"
             onClick={() => setMostrarModalMenu(true)}
@@ -364,7 +367,7 @@ function PanelAdmin() {
             {vista === 'usuarios' && '👥 Gestión de Usuarios'}
           </h1>
 
-          {/* ✅ NUEVO: Info del menú actual */}
+          {/* Info del menú actual */}
           {menuActual && (
             <div className="menu-actual-info">
               <span className="menu-actual-badge">
@@ -635,7 +638,7 @@ function PanelAdmin() {
         </div>
       )}
 
-      {/* ========== ✅ NUEVO: MODAL ACTUALIZAR MENÚ ========== */}
+      {/* ========== MODAL ACTUALIZAR MENÚ ========== */}
       {mostrarModalMenu && (
         <div className="modal-overlay" onClick={() => setMostrarModalMenu(false)}>
           <div className="modal-container modal-menu" onClick={(e) => e.stopPropagation()}>

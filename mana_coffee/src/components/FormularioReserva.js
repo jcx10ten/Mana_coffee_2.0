@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './FormularioReserva.css';
+const API_URL = process.env.REACT_APP_API_URL || '';
 
 function FormularioReserva({ cerrarFormulario }) {
   // ============================================
@@ -154,7 +155,7 @@ function FormularioReserva({ cerrarFormulario }) {
       }
 
       // Enviar datos al backend
-      const response = await fetch('http://localhost:5000/api/reservas', {
+      const response = await fetch(`${API_URL}/api/reservas`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
