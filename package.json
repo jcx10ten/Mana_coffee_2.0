@@ -2,7 +2,7 @@
   "name": "mana-coffee-fullstack",
   "version": "1.0.0",
   "scripts": {
-    "postinstall": "npm --prefix ./mana_coffee/server install --build=from-source && npm --prefix ./mana_coffee install",
+    "postinstall": "npm --prefix ./mana_coffee/server install && npm rebuild --prefix ./mana_coffee/server sqlite3 --build-from-source && npm --prefix ./mana_coffee install",
     "build": "npm --prefix ./mana_coffee run build",
     "start": "node ./mana_coffee/server/server.js"
   },
