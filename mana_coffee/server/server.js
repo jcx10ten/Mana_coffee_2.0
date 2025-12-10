@@ -4,6 +4,7 @@ const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const cors = require('cors');
 const path = require('path');
+const initializeAdmin = require('./initializeAdmin');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -84,11 +85,13 @@ db.run(`
     fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
   )
-`, (err) => {
+`, async (err) => {
   if (err) {
     console.error('❌ Error al crear tabla reservas:', err);
   } else {
     console.log('✅ Tabla reservas lista');
+    
+    await initializeAdmin(db);
   }
 });
 
