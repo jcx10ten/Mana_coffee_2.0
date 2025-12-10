@@ -30,11 +30,14 @@ function Navbar() {
       // Encontrar el link activo basándose en la ruta actual
       links.forEach(link => {
         const href = link.getAttribute('href');
+        
+        // Comparación exacta de la ruta
         if (href === location.pathname) {
           activeLink = link;
         }
-        // Para la página principal
-        if (location.pathname === '/' && href === '/') {
+        
+        // Para rutas que incluyen subrutas (ej: /arma-tu-almuerzo)
+        if (location.pathname.startsWith(href) && href !== '/') {
           activeLink = link;
         }
       });
@@ -82,7 +85,7 @@ function Navbar() {
           
           {!usuario ? (
             <>
-              <Link to="/" className="navbar-link">¿QUIÉNES SOMOS?</Link>
+              <Link to="/contactanos" className="navbar-link">¿QUIÉNES SOMOS?</Link>
               <Link to="/menu" className="navbar-link">MENÚ</Link>
               <Link to="/arma-tu-almuerzo" className="navbar-link">ARMA TU ALMUERZO</Link>
               <Link to="/iniciar-sesion" className="navbar-link">INICIAR SESIÓN</Link>
@@ -90,7 +93,7 @@ function Navbar() {
             </>
           ) : (
             <>
-              <Link to="/" className="navbar-link">¿QUIÉNES SOMOS?</Link>
+              <Link to="/contactanos" className="navbar-link">¿QUIÉNES SOMOS?</Link>
               <Link to="/menu" className="navbar-link">MENÚ</Link>
               <Link to="/arma-tu-almuerzo" className="navbar-link">ARMA TU ALMUERZO</Link>
               <Link to="/reservar" className="navbar-link">RESERVAR</Link>
