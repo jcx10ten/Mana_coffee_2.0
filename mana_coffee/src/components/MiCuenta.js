@@ -15,51 +15,49 @@ function MiCuenta() {
   }, []);
 
   const cargarReservas = async () => {
-  try {
-    const token = localStorage.getItem('token');
-    
-    if (!token) {
-      navigate('/iniciar-sesion');
-      return;
-    }
-
-    const response = await fetch('http://localhost:5000/api/reservas/mis-reservas', {
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    });
-
-    if (!response.ok) {
-      if (response.status === 401 || response.status === 403) {
-        localStorage.removeItem('token');
-        localStorage.removeItem('usuario');
-        alert('Tu sesión ha expirado. Por favor, inicia sesión nuevamente.');
+    try {
+      const token = localStorage.getItem('token');
+      
+      if (!token) {
         navigate('/iniciar-sesion');
         return;
       }
-      throw new Error('Error al cargar reservas');
-    }
 
-    const data = await response.json();
-    
-    // 👇 ARREGLO: Extraer el array de reservas
-    if (data.reservas && Array.isArray(data.reservas)) {
-      setReservas(data.reservas);  // ✅ Guardar solo el array
-    } else if (Array.isArray(data)) {
-      setReservas(data);  // ✅ Si viene directo como array
-    } else {
-      setReservas([]);  // ✅ Array vacío si no hay datos
-    }
-    
-  } catch (err) {
-    console.error('Error al cargar reservas:', err);
-    setError(err.message);
-    setReservas([]);  // ✅ Asegurar que siempre sea un array
-  } finally {
-    setCargando(false);
-  }
-};
+      const response = await fetch('http://localhost:5000/api/reservas/mis-reservas', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
 
+      if (!response.ok) {
+        if (response.status === 401 || response.status === 403) {
+          localStorage.removeItem('token');
+          localStorage.removeItem('usuario');
+          alert('Tu sesión ha expirado. Por favor, inicia sesión nuevamente.');
+          navigate('/iniciar-sesion');
+          return;
+        }
+        throw new Error('Error al cargar reservas');
+      }
+
+      const data = await response.json();
+      
+      if (data.reservas && Array.isArray(data.reservas)) {
+        setReservas(data.reservas);
+      } else if (Array.isArray(data)) {
+        setReservas(data);
+      } else {
+        setReservas([]);
+      }
+      
+    } catch (err) {
+      console.error('Error al cargar reservas:', err);
+      setError(err.message);
+      setReservas([]);
+    } finally {
+      setCargando(false);
+    }
+  };
 
   // Verificar si puede editar (más de 24 horas antes)
   const puedeEditar = (fechaReserva, horaReserva) => {
@@ -89,7 +87,7 @@ function MiCuenta() {
       }
 
       alert('Reserva cancelada exitosamente');
-      cargarReservas(); // Recargar lista
+      cargarReservas();
     } catch (err) {
       alert(err.message);
     }
@@ -136,6 +134,14 @@ function MiCuenta() {
   if (cargando) {
     return (
       <div className="mi-cuenta-container">
+        {/* ✨ BRILLITOS DE FONDO */}
+        <div className="mi-cuenta-brillos">
+          <div className="mi-cuenta-brillo brillo-amarillo brillo-top-right"></div>
+          <div className="mi-cuenta-brillo brillo-dorado brillo-mid-left"></div>
+          <div className="mi-cuenta-brillo brillo-naranja brillo-bottom-left"></div>
+          <div className="mi-cuenta-brillo brillo-rojo brillo-mid-right"></div>
+          <div className="mi-cuenta-brillo brillo-rose brillo-bottom-center"></div>
+        </div>
         <div className="loading">Cargando reservas...</div>
       </div>
     );
@@ -143,6 +149,16 @@ function MiCuenta() {
 
   return (
     <div className="mi-cuenta-container">
+      
+      {/* ✨ BRILLITOS DE FONDO */}
+      <div className="mi-cuenta-brillos">
+        <div className="mi-cuenta-brillo brillo-amarillo brillo-top-right"></div>
+        <div className="mi-cuenta-brillo brillo-dorado brillo-mid-left"></div>
+        <div className="mi-cuenta-brillo brillo-naranja brillo-bottom-left"></div>
+        <div className="mi-cuenta-brillo brillo-rojo brillo-mid-right"></div>
+        <div className="mi-cuenta-brillo brillo-rose brillo-bottom-center"></div>
+      </div>
+
       <div className="mi-cuenta-header">
         <h1>Mis Reservas</h1>
         <button className="btn-nueva-reserva" onClick={() => navigate('/reservar')}>

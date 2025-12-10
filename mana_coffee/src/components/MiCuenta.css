@@ -1,9 +1,120 @@
+/* ============================================
+   MI CUENTA - BASE CON BRILLITOS
+   ============================================ */
+
 .mi-cuenta-container {
+  width: 100%;
   min-height: calc(100vh - 80px - 200px);
-  padding: 40px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
+  background: #f5f1e8; /* 👈 Mismo fondo que Reservas */
+  padding: 100px 20px 60px 20px;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
 }
+
+/* ============================================
+   ✨ BRILLITOS DE FONDO
+   ============================================ */
+
+.mi-cuenta-brillos {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.mi-cuenta-brillo {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.18;
+  animation: mi-cuenta-sparkle 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes mi-cuenta-sparkle {
+  0%, 100% { 
+    opacity: 0.25;
+    transform: scale(0.85);
+  }
+  50% { 
+    opacity: 0.55;
+    transform: scale(1.25);
+  }
+}
+
+/* COLORES DE BRILLOS */
+.brillo-amarillo {
+  background: radial-gradient(circle,
+    rgba(255, 240, 180, 1) 0%,
+    rgba(255, 220, 130, 0.75) 40%,
+    rgba(255, 200, 80, 0.45) 60%,
+    transparent 80%
+  );
+}
+
+.brillo-dorado {
+  background: radial-gradient(circle,
+    rgba(255, 210, 120, 1) 0%,
+    rgba(255, 180, 90, 0.7) 40%,
+    rgba(255, 160, 60, 0.4) 60%,
+    transparent 80%
+  );
+}
+
+.brillo-naranja {
+  background: radial-gradient(circle,
+    rgba(255, 160, 100, 1) 0%,
+    rgba(255, 130, 80, 0.7) 40%,
+    rgba(255, 110, 60, 0.4) 60%,
+    transparent 80%
+  );
+}
+
+.brillo-rojo {
+  background: radial-gradient(circle,
+    rgba(255, 120, 120, 1) 0%,
+    rgba(255, 90, 90, 0.65) 40%,
+    rgba(255, 70, 70, 0.4) 60%,
+    transparent 80%
+  );
+}
+
+.brillo-rose {
+  background: radial-gradient(circle,
+    rgba(255, 200, 170, 1) 0%,
+    rgba(255, 170, 150, 0.7) 40%,
+    rgba(255, 150, 130, 0.4) 60%,
+    transparent 80%
+  );
+}
+
+/* POSICIONES DE BRILLOS */
+.brillo-top-right { top: -250px; right: -200px; animation-delay: 0s; }
+.brillo-mid-left { top: 30%; left: -300px; animation-delay: 1.2s; }
+.brillo-bottom-left { bottom: -250px; left: -250px; animation-delay: 2.4s; }
+.brillo-mid-right { top: 20%; right: -300px; animation-delay: 3.6s; }
+.brillo-bottom-center { bottom: -300px; left: 20%; animation-delay: 4.8s; }
+
+/* ============================================
+   CONTENIDO (por encima de los brillos)
+   ============================================ */
+
+.mi-cuenta-header,
+.reservas-grid,
+.sin-reservas,
+.loading,
+.error-message {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
 
 .mi-cuenta-header {
   display: flex;
@@ -12,34 +123,40 @@
   margin-bottom: 40px;
   flex-wrap: wrap;
   gap: 20px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .mi-cuenta-header h1 {
   font-size: 36px;
-  color: #333;
+  color: #1E0D00; /* 👈 Café oscuro */
+  font-weight: 700;
 }
 
 .btn-nueva-reserva {
   padding: 12px 30px;
-  background: linear-gradient(to right, #667eea, #764ba2);
-  color: white;
+  background: #1E0D00; /* 👈 Café oscuro sólido */
+  color: #FFDBCD; /* 👈 Durazno pastel */
   border: none;
   border-radius: 8px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 15px rgba(30, 13, 0, 0.3);
 }
 
 .btn-nueva-reserva:hover {
-  transform: scale(1.05);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(30, 13, 0, 0.4);
 }
 
 .loading {
   text-align: center;
   padding: 60px 20px;
   font-size: 20px;
-  color: #666;
+  color: #5a5a5a;
 }
 
 .error-message {
@@ -48,6 +165,9 @@
   padding: 15px;
   border-radius: 8px;
   margin-bottom: 20px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .sin-reservas {
@@ -57,31 +177,38 @@
 
 .sin-reservas p {
   font-size: 20px;
-  color: #666;
+  color: #5a5a5a;
   margin-bottom: 30px;
 }
 
 .btn-reservar-ahora {
   padding: 15px 40px;
-  background: linear-gradient(to right, #667eea, #764ba2);
-  color: white;
+  background: #1E0D00; /* 👈 Café oscuro sólido */
+  color: #FFDBCD; /* 👈 Durazno pastel */
   border: none;
   border-radius: 30px;
   font-size: 18px;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 15px rgba(30, 13, 0, 0.3);
 }
 
 .btn-reservar-ahora:hover {
-  transform: scale(1.05);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(30, 13, 0, 0.4);
 }
 
-/* Grid de reservas */
+/* ============================================
+   GRID DE RESERVAS
+   ============================================ */
+
 .reservas-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .reserva-card {
@@ -98,8 +225,8 @@
 }
 
 .reserva-card-header {
-  background: linear-gradient(to right, #667eea, #764ba2);
-  color: white;
+  background: #1E0D00; /* 👈 Café oscuro sólido */
+  color: #FFDBCD; /* 👈 Durazno pastel */
   padding: 15px 20px;
   display: flex;
   justify-content: space-between;
@@ -116,7 +243,7 @@
   border-radius: 20px;
   font-size: 13px;
   font-weight: 600;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 219, 205, 0.3); /* 👈 Durazno semi-transparente */
   text-transform: capitalize;
 }
 
@@ -130,6 +257,7 @@
   gap: 12px;
   margin-bottom: 15px;
   font-size: 15px;
+  color: #5a5a5a;
 }
 
 .reserva-icono {
@@ -169,12 +297,12 @@
 }
 
 .btn-editar {
-  background: #4CAF50;
+  background: #1E0D00;
   color: white;
 }
 
 .btn-editar:hover {
-  background: #45a049;
+  background: #1E0D00;
 }
 
 .btn-cancelar-reserva {
@@ -197,7 +325,10 @@
   font-weight: 600;
 }
 
-/* Modal de edición */
+/* ============================================
+   MODAL DE EDICIÓN
+   ============================================ */
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -224,7 +355,8 @@
 
 .modal-editar h2 {
   margin-bottom: 25px;
-  color: #333;
+  color: #1E0D00; /* 👈 Café oscuro */
+  font-weight: 700;
 }
 
 .form-group {
@@ -235,7 +367,7 @@
   display: block;
   margin-bottom: 8px;
   font-weight: 600;
-  color: #333;
+  color: #1E0D00; /* 👈 Café oscuro */
 }
 
 .form-group input,
@@ -253,7 +385,7 @@
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: #1E0D00; /* 👈 Café oscuro */
 }
 
 .form-row {
@@ -290,16 +422,24 @@
 }
 
 .btn-guardar {
-  background: linear-gradient(to right, #667eea, #764ba2);
-  color: white;
+  background: #1E0D00; /* 👈 Café oscuro sólido */
+  color: #FFDBCD; /* 👈 Durazno pastel */
 }
 
 .btn-guardar:hover {
   transform: scale(1.02);
+  box-shadow: 0 4px 15px rgba(30, 13, 0, 0.3);
 }
 
-/* Responsive */
+/* ============================================
+   RESPONSIVE - TABLETS
+   ============================================ */
+
 @media (max-width: 768px) {
+  .mi-cuenta-container {
+    padding: 90px 15px 40px 15px;
+  }
+
   .reservas-grid {
     grid-template-columns: 1fr;
   }
@@ -315,5 +455,33 @@
 
   .btn-nueva-reserva {
     width: 100%;
+  }
+
+  /* Brillos más pequeños en tablet */
+  .mi-cuenta-brillo {
+    width: 500px;
+    height: 500px;
+    filter: blur(60px);
+  }
+}
+
+/* ============================================
+   RESPONSIVE - MÓVILES
+   ============================================ */
+
+@media (max-width: 480px) {
+  .mi-cuenta-container {
+    padding: 80px 10px 30px 10px;
+  }
+
+  .mi-cuenta-header h1 {
+    font-size: 28px;
+  }
+
+  /* Brillos más pequeños en móvil */
+  .mi-cuenta-brillo {
+    width: 400px;
+    height: 400px;
+    filter: blur(50px);
   }
 }
