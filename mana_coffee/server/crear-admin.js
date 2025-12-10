@@ -1,12 +1,18 @@
+require('dotenv').config();
 const sqlite3 = require('sqlite3').verbose();
 const bcrypt = require('bcryptjs');
+const path = require('path');
 
-const db = new sqlite3.Database('./database.db', (err) => {
+const DB_PATH = process.env.NODE_ENV === 'production' 
+  ? '/opt/render/project/src/mana_coffee/server/database.db'
+  : path.join(__dirname, './database.db');
+
+const db = new sqlite3.Database(DB_PATH, (err) => {
   if (err) {
     console.error('❌ Error al conectar a la base de datos:', err);
     process.exit(1);
   }
-  console.log('✅ Conectado a la base de datos');
+  console.log('✅ Conectado a la base de datos en:', DB_PATH);
 });
 
 async function crearAdminFijo() {

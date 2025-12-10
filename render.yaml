@@ -10,3 +10,7 @@ services:
         value: production
       - key: PORT
         value: 10000
+    disk:
+      name: mana-coffee-db
+      mountPath: /opt/render/project/src/mana_coffee/server
+      sizeGB: 1

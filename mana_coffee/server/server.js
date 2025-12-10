@@ -35,7 +35,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // ==================== CONFIGURACIÓN DE BASE DE DATOS ====================
 // Detectar ruta según el entorno (producción o desarrollo)
 const DB_PATH = process.env.NODE_ENV === 'production' 
-  ? '/opt/render/project/src/server/database.db'
+  ? '/opt/render/project/src/mana_coffee/server/database.db'
   : process.env.DB_PATH || './database.db';
 
 console.log('📊 Usando base de datos en:', DB_PATH);
