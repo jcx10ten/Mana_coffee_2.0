@@ -118,7 +118,7 @@ function ArmaTuAlmuerzo() {
   return (
     <section className="arma-tu-almuerzo">
       <div className="arma-header">
-        <h2 className="arma-title">Construye tu Almuerzo</h2>
+        <h2 className="arma-title">ARMA TU ALMUERZO</h2>
         <p className="arma-subtitle">Elige los ingredientes para crear tu almuerzo perfecto</p>
       </div>
 
