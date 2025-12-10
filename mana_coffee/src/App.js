@@ -40,9 +40,7 @@ function App() {
                 
                 {/* 2. SECCIÓN INSTAGRAM + TEXTO */}
                 <div className="instagram-section-wrapper">
-                  <InstagramFeed />
-                  
-                  {/* Texto a la derecha */}
+                  {/* Texto a la izquierda */}
                   <div className="instagram-side-text">
                     <h2>¡Síguenos en Instagram!</h2>
                     <p className="subtitle">Mantente al día con nuestras novedades</p>
@@ -60,10 +58,10 @@ function App() {
                       </p>
                       
                       <ul className="instagram-benefits">
-                        <li>📸 Descubre nuestros nuevos productos</li>
-                        <li>🎉 Participa en sorteos exclusivos</li>
-                        <li>☕ Conoce historias detrás de cada café</li>
-                        <li>👥 Conecta con nuestra comunidad</li>
+                        <li>Descubre nuestros nuevos productos</li>
+                        <li>Participa en sorteos exclusivos</li>
+                        <li>Conoce historias detrás de cada café</li>
+                        <li>Conecta con nuestra comunidad</li>
                       </ul>
                       
                       <a 
@@ -76,15 +74,26 @@ function App() {
                       </a>
                     </div>
                   </div>
+                  
+                  <InstagramFeed />
                 </div>
                 
-                {/* 3. BANNER PARA VER MENÚ COMPLETO */}
+                {/* 3. BANNER PARA HACER RESERVAS */}
                 <div className="home-menu-banner">
-                  <h2>Descubre nuestro menú completo</h2>
-                  <p>Desde cafés especiales hasta deliciosos almuerzos</p>
-                  <a href="/menu" className="home-menu-btn">
-                    Ver Menú Completo →
-                  </a>
+                  <h2>Puedes reservar aquí</h2>
+                  <button 
+                    className="home-menu-btn"
+                    onClick={() => {
+                      const token = localStorage.getItem('token');
+                      if (token) {
+                        window.location.href = '/reservar';
+                      } else {
+                        window.location.href = '/iniciar-sesion';
+                      }
+                    }}
+                  >
+                    Ir a Reservas →
+                  </button>
                 </div>
               </>
             } />
